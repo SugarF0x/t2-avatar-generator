@@ -1,0 +1,23 @@
+{
+  "name": "t2-avatar-generator",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite-ssg build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.31"
+  },
+  "devDependencies": {
+    "@unhead/vue": "^1.9.16",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "sass": "^1.77.8",
+    "typescript": "^5.2.2",
+    "vite": "^5.3.4",
+    "vite-ssg": "^0.23.8",
+    "vue-tsc": "^2.0.24"
+  }
+}
