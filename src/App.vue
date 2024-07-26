@@ -1,47 +1,42 @@
 <script setup lang="ts">
 import Konva from "konva"
 import { onMounted } from "vue"
+import ImageTemplate from '@/assets/image-template.svg'
+import AvatarExample from '@/assets/avatar-example.jpg'
+
+const [TemplateImage, AvatarImage] = [ImageTemplate, AvatarExample].map(path => {
+  const image = new Image()
+  image.src = path
+  return image
+})
 
 onMounted(() => {
-
   const stage = new Konva.Stage({
     container: 'container',
     width: window.innerWidth,
     height: window.innerHeight,
   })
 
-  const layer = new Konva.Layer()
-  stage.add(layer)
+  const layers = [new Konva.Layer(), new Konva.Layer({ listening: false }), new Konva.Layer()]
+  layers.forEach(layer => stage.add(layer))
+  const [photoLayer, templateLayer, controlsLayer] = layers
 
-  const text1 = new Konva.Text({
-    x: 50,
-    y: 70,
-    fontSize: 30,
-    text: 'centeredScaling = true',
+  const photo = new Konva.Image({
+    image: AvatarImage,
     draggable: true,
   })
-  layer.add(text1)
+  photoLayer.add(photo)
 
-  const tr1 = new Konva.Transformer({
-    nodes: [text1],
+  const controls = new Konva.Transformer({
+    nodes: [photo],
     centeredScaling: true,
   })
-  layer.add(tr1)
+  controlsLayer.add(controls)
 
-  const text2 = new Konva.Text({
-    x: 50,
-    y: 200,
-    fontSize: 30,
-    text: 'centeredScaling = false',
-    draggable: true,
+  const templateImage = new Konva.Image({
+    image: TemplateImage,
   })
-  layer.add(text2)
-
-  const tr2 = new Konva.Transformer({
-    nodes: [text2],
-    centeredScaling: false,
-  })
-  layer.add(tr2)
+  templateLayer.add(templateImage)
 })
 </script>
 
