@@ -3,7 +3,7 @@ import T2Logo from '@/assets/t2-logo.svg'
 </script>
 
 <template>
-  <div class="header">
+  <section id="header">
     <div class="title">
       <div>хотим разделить</div>
       <div class="highlighted">с вами важное</div>
@@ -23,23 +23,16 @@ import T2Logo from '@/assets/t2-logo.svg'
 
       <img :src="T2Logo" alt="t2-logo">
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
-.header {
-  padding: 8% 10%;
+#header {
   gap: 50px;
-  font-size: 40px;
 }
 
 .highlighted {
-  color: var(--t2-pink);
-}
-
-.title {
-  text-transform: uppercase;
-  font-size: 130px;
+  color: var(--t2-pink)
 }
 
 .actions {

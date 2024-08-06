@@ -8,9 +8,12 @@ html, body {
   min-width: 100vw;
   background-color: #fff;
   font-family: "T2 Rooftop Medium", "Roboto Light", sans-serif;
+  font-size: 40px;
 }
 
-body, body * {
-  display: flex;
-  flex-direction: column;
+body {
+  & div, & section {
+    display: flex;
+    flex-direction: column;
+  }
 }

@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import Header from "@/views/Header.vue"
+import WelcomeHeader from "@/views/WelcomeHeader.vue"
+import ColorPicker from "@/views/ColorPicker.vue"
 </script>
 
 <template>
-  <Header />
+  <welcome-header />
+  <color-picker />
 </template>
 
 <style lang="scss" scoped>

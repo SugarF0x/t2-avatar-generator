@@ -7,6 +7,7 @@ button.t2 {
   text-transform: uppercase;
   border-radius: 13px;
   cursor: pointer;
+  text-align: center;
 
   &:hover, &:focus-visible {
     filter: contrast(.9);
@@ -19,4 +20,23 @@ button.t2 {
   &:active {
     filter: contrast(.8);
   }
+
+  &.secondary {
+    background-color: var(--t2-green);
+    color: black;
+  }
+}
+
+section {
+  padding: 8% 10%;
+
+  &:nth-child(2n) {
+    background-color: black;
+    color: white;
+  }
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 130px;
 }
