@@ -59,8 +59,12 @@ $pink: #FE3496;
     border-radius: 13px;
     cursor: pointer;
 
-    &:hover {
+    &:hover, &:focus-visible {
       filter: contrast(.9);
+    }
+
+    &:focus-visible {
+      outline: 4px solid black;
     }
 
     &:active {
