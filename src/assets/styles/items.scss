@@ -1,0 +1,22 @@
+button.t2 {
+  all: unset;
+  background-color: var(--t2-pink);
+  color: white;
+  padding: 40px;
+  font-size: 70px;
+  text-transform: uppercase;
+  border-radius: 13px;
+  cursor: pointer;
+
+  &:hover, &:focus-visible {
+    filter: contrast(.9);
+  }
+
+  &:focus-visible {
+    outline: 4px solid black;
+  }
+
+  &:active {
+    filter: contrast(.8);
+  }
+}

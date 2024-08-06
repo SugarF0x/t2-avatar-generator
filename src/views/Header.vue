@@ -17,7 +17,7 @@ import T2Logo from '@/assets/t2-logo.svg'
       Предлагаем сменить аватарку в телеграм на 1 день
     </div>
     <div class="actions">
-      <button>
+      <button class="t2">
         я готов!
       </button>
 
@@ -46,28 +46,5 @@ import T2Logo from '@/assets/t2-logo.svg'
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-
-  button {
-    all: unset;
-    background-color: var(--t2-pink);
-    color: white;
-    padding: 40px;
-    font-size: 70px;
-    text-transform: uppercase;
-    border-radius: 13px;
-    cursor: pointer;
-
-    &:hover, &:focus-visible {
-      filter: contrast(.9);
-    }
-
-    &:focus-visible {
-      outline: 4px solid black;
-    }
-
-    &:active {
-      filter: contrast(.8);
-    }
-  }
 }
 </style>
