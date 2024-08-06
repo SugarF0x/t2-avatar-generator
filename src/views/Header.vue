@@ -27,8 +27,6 @@ import T2Logo from '@/assets/t2-logo.svg'
 </template>
 
 <style scoped lang="scss">
-$pink: #FE3496;
-
 .header {
   padding: 8% 10%;
   gap: 50px;
@@ -36,7 +34,7 @@ $pink: #FE3496;
 }
 
 .highlighted {
-  color: $pink;
+  color: var(--t2-pink);
 }
 
 .title {
@@ -51,7 +49,7 @@ $pink: #FE3496;
 
   button {
     all: unset;
-    background-color: $pink;
+    background-color: var(--t2-pink);
     color: white;
     padding: 40px;
     font-size: 70px;
