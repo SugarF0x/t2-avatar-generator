@@ -2,8 +2,11 @@
 @import './variables.scss';
 @import './items.scss';
 
-html, body {
+* {
   margin: 0;
+}
+
+html, body {
   min-height: 100vh;
   min-width: 100vw;
   background-color: #fff;
