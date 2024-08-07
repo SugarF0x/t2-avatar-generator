@@ -28,7 +28,7 @@ import T2Logo from '@/assets/t2-logo.svg'
 
 <style scoped lang="scss">
 #header {
-  gap: 50px;
+  gap: calc(100vw / 38.4);
 }
 
 .highlighted {

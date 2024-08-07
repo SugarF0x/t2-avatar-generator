@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Konva from "konva"
 import { onMounted } from "vue"
-import ImageTemplate from '@/assets/image-template.svg'
-import AvatarExample from '@/assets/avatar-example.jpg'
+import ImageTemplate from '@/assets/images/t2-logo-crop.svg'
+import AvatarExample from '@/assets/images/avatar-example.jpg'
 
 const [TemplateImage, AvatarImage] = [ImageTemplate, AvatarExample].map(path => {
   const image = new Image()
@@ -12,9 +12,9 @@ const [TemplateImage, AvatarImage] = [ImageTemplate, AvatarExample].map(path => 
 
 onMounted(() => {
   const stage = new Konva.Stage({
-    container: 'editor',
-    width: window.innerWidth,
-    height: window.innerHeight,
+    container: 'konva',
+    width: window.innerWidth / 2.5,
+    height: window.innerWidth / 2.5,
   })
 
   const layers = [new Konva.Layer(), new Konva.Layer({ listening: false }), new Konva.Layer()]
@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="editor" />
+  <div id="konva" />
 </template>
 
 <style scoped lang="scss">

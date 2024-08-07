@@ -37,9 +37,10 @@ import { colors, colorIndex } from "@/store.ts"
                 :key="color"
                 :style="{ backgroundColor: `var(--t2-${color})` }"
                 class="circle"
-                :class="{ selected:  colorIndex === index }"
                 @click="colorIndex = index"
-              />
+              >
+                <span v-if="colorIndex === index" class="selection-circle" />
+              </button>
             </div>
           </td>
         </tr>
@@ -50,11 +51,11 @@ import { colors, colorIndex } from "@/store.ts"
 
 <style scoped lang="scss">
 #color-picker {
-  gap: 150px;
+  gap: calc(100vw / 12.8);
 
   table {
     border-collapse: separate;
-    border-spacing: calc(1920px / 30) calc(1920px / 14.7);
+    border-spacing: calc(100vw / 30) calc(100vw / 14.7);
   }
 }
 
@@ -64,17 +65,18 @@ import { colors, colorIndex } from "@/store.ts"
 
 .actions {
   flex-direction: row;
-  gap: 10px;
+  gap: calc(100vw / 192);
 }
 
 .circle {
   all: unset;
-  width: calc(1920px / 13.7);
-  height: calc(1920px / 13.7);
+  width: calc(100vw / 13.7);
+  height: calc(100vw / 13.7);
   border-radius: 50%;
   aspect-ratio: 1;
   cursor: pointer;
   transition: .01s ease-in-out;
+  position: relative;
 
   &:hover, &:focus-visible {
     filter: contrast(.9);
@@ -88,14 +90,14 @@ import { colors, colorIndex } from "@/store.ts"
     filter: contrast(.8);
   }
 
-  &.selected::after {
-    content: '';
+  .selection-circle {
+    box-sizing: border-box;
     border: 5px solid white;
     border-radius: 50%;
     position: absolute;
-    width: calc(1920px / 13.7) - 24;
-    height: calc(1920px / 13.7) - 24;
-    transform: translateY(-50%) translateX(6px);
+    width: 100%;
+    height: 100%;
+    transform: translateY(-50%) scale(.9);
   }
 }
 </style>
