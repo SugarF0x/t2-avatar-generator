@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import LineArrow from "@/components/LineArrow.vue"
-import { ref } from "vue"
-
-const colors = ['pink', 'green', 'cyan', 'blue']
-const colorIndex = ref(0)
+import { colors, colorIndex } from "@/store.ts"
 </script>
 
 <template>
@@ -12,50 +9,53 @@ const colorIndex = ref(0)
       <div>Воспользуйтесь</div>
       <div class="highlighted">конструктором</div>
     </div>
-    <div class="steps-container">
-      <!-- TODO: table?? -->
-      <div class="step">
-        <span>
-          <span style="color: var(--t2-green)">Шаг 1:</span>
-          выберите фото
-        </span>
-        <line-arrow />
-        <button class="t2 secondary" style="flex: 0;">Выбрать фото</button>
-      </div>
-      <div class="step">
-        <span>
-          <span style="color: var(--t2-green)">Шаг 2:</span>
-          выберите цвет
-        </span>
-        <line-arrow />
-        <div class="actions">
-          <button
-            v-for="(color, index) of colors"
-            :key="color"
-            :style="{ backgroundColor: `var(--t2-${color})` }"
-            class="circle"
-            :class="{ selected:  colorIndex === index }"
-            @click="colorIndex = index"
-          />
-        </div>
-      </div>
-    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <span>
+              <span style="color: var(--t2-green)">Шаг 1:</span>
+              выберите фото
+            </span>
+          </td>
+          <td><line-arrow /></td>
+          <td><button class="t2 secondary" style="flex: 0;">Выбрать фото</button></td>
+        </tr>
+        <tr>
+          <td>
+            <span>
+              <span style="color: var(--t2-green)">Шаг 2:</span>
+              выберите цвет
+            </span>
+          </td>
+          <td><line-arrow /></td>
+          <td>
+            <div class="actions">
+              <button
+                v-for="(color, index) of colors"
+                :key="color"
+                :style="{ backgroundColor: `var(--t2-${color})` }"
+                class="circle"
+                :class="{ selected:  colorIndex === index }"
+                @click="colorIndex = index"
+              />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </template>
 
 <style scoped lang="scss">
 #color-picker {
   gap: 150px;
-}
 
-.steps-container {
-  gap: 130px;
-}
-
-.step {
-  flex-direction: row;
-  gap: calc(1920px / 30);
-  align-items: center;
+  table {
+    border-collapse: separate;
+    border-spacing: calc(1920px / 30) calc(1920px / 14.7);
+  }
 }
 
 .highlighted {
@@ -74,6 +74,19 @@ const colorIndex = ref(0)
   border-radius: 50%;
   aspect-ratio: 1;
   cursor: pointer;
+  transition: .01s ease-in-out;
+
+  &:hover, &:focus-visible {
+    filter: contrast(.9);
+  }
+
+  &:focus-visible {
+    outline: 4px solid cyan;
+  }
+
+  &:active {
+    filter: contrast(.8);
+  }
 
   &.selected::after {
     content: '';

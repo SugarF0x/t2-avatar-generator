@@ -4,6 +4,7 @@ button.t2 {
   color: white;
   padding: 40px;
   font-size: 70px;
+  font-family: "T2 Halvar Breit", "Roboto Light", sans-serif;
   text-transform: uppercase;
   border-radius: 13px;
   cursor: pointer;
@@ -14,7 +15,7 @@ button.t2 {
   }
 
   &:focus-visible {
-    outline: 4px solid black;
+    outline: 4px solid cyan;
   }
 
   &:active {
