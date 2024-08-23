@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import T2Logo from '@/assets/t2-logo.svg'
+import T2Logo from '@/assets/images/logo-black.svg'
 </script>
 
 <template>

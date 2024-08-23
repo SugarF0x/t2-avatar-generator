@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Konva from "konva"
 import { onMounted } from "vue"
-import ImageTemplate from '@/assets/images/t2-logo-crop.svg'
+import ImageTemplate from '@/assets/images/shape-logo-white.svg'
 import AvatarExample from '@/assets/images/avatar-example.jpg'
 
+// TODO: fix initial load having no image size fucking up calculations
 const [TemplateImage, AvatarImage] = [ImageTemplate, AvatarExample].map(path => {
   const image = new Image()
   image.src = path
@@ -24,6 +25,8 @@ onMounted(() => {
   const photo = new Konva.Image({
     image: AvatarImage,
     draggable: true,
+    x: (stage.width() - AvatarImage.width) / 2,
+    y: (stage.height() - AvatarImage.height) / 2,
   })
   photoLayer.add(photo)
 
@@ -35,6 +38,8 @@ onMounted(() => {
 
   const templateImage = new Konva.Image({
     image: TemplateImage,
+    x: (stage.width() - TemplateImage.width) / 2,
+    y: (stage.height() - TemplateImage.height) / 2,
   })
   templateLayer.add(templateImage)
 })
