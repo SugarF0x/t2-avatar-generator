@@ -1,4 +1,5 @@
 @import './fonts.scss';
+@import './mixins.scss';
 @import './variables.scss';
 @import './items.scss';
 
@@ -22,5 +23,8 @@ body {
   }
 }
 
-button:focus-visible { outline: 5px auto -webkit-focus-ring-color; }
-input:focus-visible { outline: 5px auto -webkit-focus-ring-color; }
+button:focus-visible,
+input:focus-visible,
+label:has(input[type=checkbox]:focus-visible) {
+  outline: 5px auto -webkit-focus-ring-color;
+}
