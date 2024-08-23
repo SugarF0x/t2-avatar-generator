@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import CornerCross from "@/assets/images/corner-cross.svg"
 import ImageEditor from "@/components/ImageEditor.vue"
+import Metrics from "@/services/metrics.ts"
+
+function handleCreation() {
+  Metrics.log(Metrics.ID.GENERATE_AVATAR)
+}
 </script>
 
 <template>
@@ -14,7 +19,7 @@ import ImageEditor from "@/components/ImageEditor.vue"
       <image-editor />
       <div class="text-container">
         <p>Вы можете менять расположение, поворачивать, увеличивать или уменьшать так, как вам нравится!</p>
-        <button class="t2">скачать</button>
+        <button class="t2" @click="handleCreation">скачать</button>
       </div>
     </div>
 
