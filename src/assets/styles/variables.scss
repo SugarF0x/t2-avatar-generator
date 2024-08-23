@@ -1,6 +1,12 @@
 :root {
-  --t2-pink: #FE3496;
-  --t2-green: #A6FB04;
+  --t2-pink: #FF3495;
+  --t2-green: #A7FC00;
   --t2-cyan: #00B5EF;
   --t2-blue: #0000FF;
+}
+
+@mixin large() {
+  @media (min-width: 360px) {
+    @content
+  }
 }

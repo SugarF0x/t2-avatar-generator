@@ -1,30 +1,42 @@
+:root {
+  --highlight-color: var(--t2-pink);
+  --background-color: white;
+  --font-color: black;
+}
+
+.dark {
+  --highlight-color: var(--t2-green);
+  --background-color: black;
+  --font-color: white;
+}
+
 button.t2 {
   all: unset;
-  background-color: var(--t2-pink);
-  color: white;
-  padding: 40px;
-  font-size: 70px;
+  background-color: var(--highlight-color);
+  color: var(--background-color);
   font-family: "T2 Halvar Breit", "Roboto Light", sans-serif;
   text-transform: uppercase;
-  border-radius: 13px;
-  cursor: pointer;
   text-align: center;
 
-  &:hover, &:focus-visible {
-    filter: contrast(.9);
+  font-size: 10px;
+  padding: 10px 10px;
+
+  @include large {
+    font-size: 25px;
+    padding: 59px 98.5px;
+    border-radius: 75px;
   }
 
-  &:focus-visible {
-    outline: 4px solid cyan;
+  &:disabled {
+    color: #808080;
+    background-color: #D1D1D1;
   }
 
-  &:active {
-    filter: contrast(.8);
-  }
+  &:not(:disabled) {
+    cursor: pointer;
 
-  &.secondary {
-    background-color: var(--t2-green);
-    color: black;
+    &:active { filter: contrast(.9); }
+    &:hover { box-shadow: 0 0 130px 0 #FFFFFF80 inset; }
   }
 }
 
