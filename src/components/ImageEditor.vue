@@ -33,6 +33,9 @@ onMounted(() => {
   const controls = new Konva.Transformer({
     nodes: [photo],
     centeredScaling: true,
+    rotateEnabled: false,
+    flipEnabled: false,
+    enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
   })
   controlsLayer.add(controls)
 
@@ -40,6 +43,7 @@ onMounted(() => {
     image: TemplateImage,
     x: (stage.width() - TemplateImage.width) / 2,
     y: (stage.height() - TemplateImage.height) / 2,
+    opacity: .8,
   })
   templateLayer.add(templateImage)
 })
