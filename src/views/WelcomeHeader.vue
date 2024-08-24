@@ -5,7 +5,7 @@ import { useI18n } from "vue-i18n"
 const { t } = useI18n()
 
 function handleReady() {
-
+  // TODO: scroll to wherever
 }
 </script>
 
@@ -101,7 +101,7 @@ function handleReady() {
 
   @include large {
     font-size: 20px;
-    //max-width: 62.5%;
+    max-width: 75%;
   }
 
   @include large {
@@ -137,16 +137,29 @@ function handleReady() {
   bottom: -10vw;
   right: -5vw;
   pointer-events: none;
-  width: 65vw;
+  width: min(65vw, 50vh);
+
+  @include large {
+    top: -20px;
+    width: unset;
+    height: calc(100% + 20px);
+    right: min(calc(-600px + max(0px, calc(80vw - 600px))), -200px);
+  }
 }
 
 .sim {
   position: absolute;
   pointer-events: none;
   width: 50vw;
-  left: 0;
+  left: 5vw;
   bottom: 0;
   transform: translateX(-20%);
+
+  @include large {
+    width: 400px;
+    left: calc(50% - min(0px, calc(100vw - 800px)));
+    transform: translate(-50%, 20%);
+  }
 }
 </style>
 

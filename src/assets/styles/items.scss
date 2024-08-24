@@ -42,8 +42,12 @@ button.t2 {
 }
 
 section {
-  padding: 50px 20px;
+  padding: 45px 20px;
   align-items: center;
+
+  @include large {
+    padding: 70px 20px;
+  }
 
   & > * {
     width: min(100%, 1200px);
