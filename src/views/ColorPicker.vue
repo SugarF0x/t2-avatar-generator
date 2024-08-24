@@ -1,103 +1,110 @@
 <script setup lang="ts">
 import LineArrow from "@/components/LineArrow.vue"
 import { colors, colorIndex } from "@/store.ts"
+import { useI18n } from "vue-i18n"
+import ColorSwitch from "@/components/ColorSwitch.vue"
+
+const { t } = useI18n()
 </script>
 
 <template>
   <section id="color-picker">
-    <div class="title">
-      <div>Воспользуйтесь</div>
-      <div class="highlighted">конструктором</div>
+    <div class="container">
+      <h2 class="title">{{ t('title') }}</h2>
+      <div class="content">
+        <table>
+          <tr>
+            <td>
+              <span class="step">{{ t('step.1.title') }}</span>
+              {{ t('step.1.description') }}
+            </td>
+            <td><line-arrow /></td>
+            <td>
+              <button class="t2 dark">{{ t('cta.photo') }}</button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="step">{{ t('step.2.title') }}</span>
+              {{ t('step.2.description') }}
+            </td>
+            <td><line-arrow /></td>
+            <td>
+              <color-switch class="dark" />
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
-
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <span>
-              <span style="color: var(--t2-green)">Шаг 1:</span>
-              выберите фото
-            </span>
-          </td>
-          <td><line-arrow /></td>
-          <td><button class="t2 secondary" style="flex: 0;">Выбрать фото</button></td>
-        </tr>
-        <tr>
-          <td>
-            <span>
-              <span style="color: var(--t2-green)">Шаг 2:</span>
-              выберите цвет
-            </span>
-          </td>
-          <td><line-arrow /></td>
-          <td>
-            <div class="actions">
-              <button
-                v-for="(color, index) of colors"
-                :key="color"
-                :style="{ backgroundColor: `var(--t2-${color})` }"
-                class="circle"
-                @click="colorIndex = index"
-              >
-                <span v-if="colorIndex === index" class="selection-circle" />
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </section>
 </template>
 
 <style scoped lang="scss">
-#color-picker {
-  gap: calc(100vw / 12.8);
+@import '@/assets/styles/mixins';
 
-  table {
-    border-collapse: separate;
-    border-spacing: calc(100vw / 30) calc(100vw / 14.7);
-  }
-}
-
-.highlighted {
+.step {
   color: var(--t2-green);
 }
 
-.actions {
-  flex-direction: row;
-  gap: calc(100vw / 192);
+.container {
+  font-size: 10px;
+  gap: 20px;
+
+  @include large {
+    font-size: 33px;
+    gap: 15px;
+  }
+
+  table {
+    border-spacing: 10px;
+    border-collapse: separate;
+  }
+
+  button {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
-.circle {
-  all: unset;
-  width: calc(100vw / 13.7);
-  height: calc(100vw / 13.7);
-  border-radius: 50%;
-  aspect-ratio: 1;
-  cursor: pointer;
-  transition: .01s ease-in-out;
-  position: relative;
+.title {
+  color: black;
+  background-color: var(--t2-green);
+  font-family: "T2 Halvar Breit", sans-serif;
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: uppercase;
+  word-break: break-word;
 
-  &:hover, &:focus-visible {
-    filter: contrast(.9);
+  font-size: 24px;
+  border-radius: 10px;
+  padding: 4px 8px;
+
+  @include large {
+    font-size: 50px;
+    border-radius: 30px;
+    padding: 38px 64px;
   }
+}
 
-  &:focus-visible {
-    outline: 4px solid cyan;
-  }
+.content {
+  background-color: #1E1E1E;
 
-  &:active {
-    filter: contrast(.8);
-  }
+  border-radius: 7px;
+  padding: 10px;
 
-  .selection-circle {
-    box-sizing: border-box;
-    border: 5px solid white;
-    border-radius: 50%;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform: translateY(-50%) scale(.9);
+  @include large {
+    border-radius: 30px;
+    padding: 75px 50px;
   }
 }
 </style>
+
+<i18n>
+ru:
+  title: воспользуйтесь конструктором
+  step.1.title: 'Шаг 1:'
+  step.1.description: выберите фото
+  step.2.title: 'Шаг 2:'
+  step.2.description: выберите цвет
+  cta.photo: выбрать фото
+</i18n>
