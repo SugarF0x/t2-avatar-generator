@@ -7,32 +7,47 @@ const { t } = useI18n()
 
 <template>
   <section id="header">
-    <div class="title">
-      <div>{{ t('title.1') }}</div>
-      <div class="highlighted">{{ t('title.2') }}</div>
-    </div>
-    <div>{{ t('body.1') }}</div>
-    <div class="highlighted">{{ t('body.2') }}</div>
-    <div class="actions">
-      <button class="t2">{{ t('cta.ready') }}</button>
-      <img :src="T2Logo" alt="t2-logo">
+    <div class="toolbar">
+      <img :src="T2Logo" alt="logo">
+      <div class="bar" />
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
-#header {
-  gap: calc(100vw / 38.4);
-}
+@import '@/assets/styles/mixins';
 
-.highlighted {
-  color: var(--t2-pink)
-}
-
-.actions {
+.toolbar {
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+
+  gap: 11px;
+
+  @include large {
+    gap: 38px;
+  }
+
+  img {
+    height: 25px;
+
+    @include large {
+      height: 95px;
+    }
+  }
+}
+
+.bar {
+  background-color: var(--t2-pink);
+  flex-grow: 1;
+
+  height: 32px;
+  border-radius: 10px;
+
+
+  @include large {
+    height: 124px;
+    border-radius: 30px;
+  }
 }
 </style>
 

@@ -42,7 +42,12 @@ button.t2 {
 }
 
 section {
-  padding: 8% 10%;
+  padding: 50px 20px;
+  align-items: center;
+
+  & > * {
+    width: min(100%, 1200px);
+  }
 
   &:nth-child(2n) {
     background-color: black;
