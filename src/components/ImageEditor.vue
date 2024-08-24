@@ -14,11 +14,16 @@ const [TemplateImage, AvatarImage] = [ImageTemplate, AvatarExample].map(path => 
 onMounted(() => {
   const stage = new Konva.Stage({
     container: 'konva',
-    width: window.innerWidth / 2.5,
-    height: window.innerWidth / 2.5,
+    width: 512,
+    height: 512,
   })
 
-  const layers = [new Konva.Layer(), new Konva.Layer({ listening: false }), new Konva.Layer()]
+  const layers = [
+    new Konva.Layer({ clipFunc: ctx => void ctx.arc(stage.width() / 2, stage.width() / 2, stage.width() / 2, 0, Math.PI * 2, false) }),
+    new Konva.Layer({ listening: false }),
+    new Konva.Layer()
+  ]
+
   layers.forEach(layer => stage.add(layer))
   const [photoLayer, templateLayer, controlsLayer] = layers
 
@@ -41,8 +46,8 @@ onMounted(() => {
 
   const templateImage = new Konva.Image({
     image: TemplateImage,
-    x: (stage.width() - TemplateImage.width) / 2,
-    y: (stage.height() - TemplateImage.height) / 2,
+    width: stage.width(),
+    height: stage.height(),
     opacity: .8,
   })
   templateLayer.add(templateImage)

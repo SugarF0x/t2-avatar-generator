@@ -36,6 +36,10 @@ function handleReady() {
 <style scoped lang="scss">
 @import '@/assets/styles/mixins';
 
+#header {
+  overflow: hidden;
+}
+
 .container {
   position: relative;
 
