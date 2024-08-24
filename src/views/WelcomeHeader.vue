@@ -11,31 +11,34 @@ function handleReady() {
 
 <template>
   <section id="header">
-    <div class="toolbar">
-      <img :src="T2Logo" alt="logo">
-      <div class="bar" />
-    </div>
-    <div class="card">
-      <div class="content">
-        <h1>
-          {{ t('title.1') }}
-          <br>
-          <span style="color: var(--t2-pink)">{{ t('title.2') }}</span>
-        </h1>
-        <p>{{ t('body.1') }}</p>
-        <button class="t2 dark" @click="handleReady">{{ t('cta.ready') }}</button>
+    <div class="container">
+      <div class="toolbar">
+        <img :src="T2Logo" alt="logo">
+        <div class="bar" />
       </div>
-      <img src="@/assets/images/illustrations/header-profile.png" alt="profile" class="profile">
+      <div class="card">
+        <div class="content">
+          <h1>
+            {{ t('title.1') }}
+            <br>
+            <span style="color: var(--t2-pink)">{{ t('title.2') }}</span>
+          </h1>
+          <p>{{ t('body.1') }}</p>
+          <button class="t2 dark" @click="handleReady">{{ t('cta.ready') }}</button>
+        </div>
+        <img src="@/assets/images/illustrations/header-profile.png" alt="profile" class="profile">
+      </div>
+      <img src="@/assets/images/illustrations/sim.png" alt="sim" class="sim">
     </div>
-    <img src="@/assets/images/illustrations/sim.png" alt="sim" class="sim">
   </section>
 </template>
 
 <style scoped lang="scss">
 @import '@/assets/styles/mixins';
 
-#header {
+.container {
   position: relative;
+
   gap: 5px;
 
   @include large {
@@ -153,12 +156,12 @@ function handleReady() {
   width: 50vw;
   left: 5vw;
   bottom: 0;
-  transform: translateX(-20%);
+  transform: translate(-20%, 30%);
 
   @include large {
     width: 400px;
     left: calc(50% - min(0px, calc(100vw - 800px)));
-    transform: translate(-50%, 20%);
+    transform: translate(-50%, 30%);
   }
 }
 </style>

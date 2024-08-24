@@ -10,22 +10,24 @@ function handleCreation() {
 
 <template>
   <section id="editor">
-    <div class="band">
-      <img :src="CornerCross" alt="cross.svg">
-      <img :src="CornerCross" alt="cross.svg">
-    </div>
-
-    <div class="content">
-      <image-editor />
-      <div class="text-container">
-        <p>Вы можете менять расположение, поворачивать, увеличивать или уменьшать так, как вам нравится!</p>
-        <button class="t2" @click="handleCreation">скачать</button>
+    <div class="container">
+      <div class="band">
+        <img :src="CornerCross" alt="cross.svg">
+        <img :src="CornerCross" alt="cross.svg">
       </div>
-    </div>
 
-    <div class="band">
-      <img :src="CornerCross" alt="cross.svg">
-      <img :src="CornerCross" alt="cross.svg">
+      <div class="content">
+        <image-editor />
+        <div class="text-container">
+          <p>Вы можете менять расположение, поворачивать, увеличивать или уменьшать так, как вам нравится!</p>
+          <button class="t2" @click="handleCreation">скачать</button>
+        </div>
+      </div>
+
+      <div class="band">
+        <img :src="CornerCross" alt="cross.svg">
+        <img :src="CornerCross" alt="cross.svg">
+      </div>
     </div>
   </section>
 </template>

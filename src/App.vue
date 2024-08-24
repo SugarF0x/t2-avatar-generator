@@ -8,7 +8,7 @@ import ColorSwitch from "@/components/ColorSwitch.vue"
 
 <template>
   <welcome-header />
-<!--  <color-picker />-->
+  <color-picker />
 <!--  <avatar-editor />-->
 <!--  <you-rock />-->
 </template>

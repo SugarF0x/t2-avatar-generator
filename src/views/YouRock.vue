@@ -10,15 +10,17 @@ const images = [Image1, Image2, Image3, Image4, Image5]
 
 <template>
   <section id="you-rock">
-    <div class="title">
-      Готово,
-      <br>
-      <span style="color: var(--t2-green)">Вы великолепны!</span>
-    </div>
-    <p>Ваша идеальная аватарка готова, осталось поставить ее в своем Telegram</p>
-    <p style="color: var(--t2-green)">Мы благодарим вас за поддержку и хотим познакомить с теми, кто тоже решил поддержать важное событие для нашего бренда!</p>
-    <div class="carousel">
-      <img v-for="image of images" :key="image" :src="image" alt="example">
+    <div class="container">
+      <div class="title">
+        Готово,
+        <br>
+        <span style="color: var(--t2-green)">Вы великолепны!</span>
+      </div>
+      <p>Ваша идеальная аватарка готова, осталось поставить ее в своем Telegram</p>
+      <p style="color: var(--t2-green)">Мы благодарим вас за поддержку и хотим познакомить с теми, кто тоже решил поддержать важное событие для нашего бренда!</p>
+      <div class="carousel">
+        <img v-for="image of images" :key="image" :src="image" alt="example">
+      </div>
     </div>
   </section>
 </template>
