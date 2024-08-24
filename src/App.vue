@@ -18,7 +18,7 @@ import ColorSwitch from "@/components/ColorSwitch.vue"
     <color-switch class="dark" style="opacity: 0;" />
   </div>
 
-<!--  <welcome-header />-->
+  <welcome-header />
 <!--  <color-picker />-->
 <!--  <avatar-editor />-->
 <!--  <you-rock />-->

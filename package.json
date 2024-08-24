@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "konva": "^9.3.14",
-    "vue": "^3.4.31"
+    "vue": "^3.4.31",
+    "vue-i18n": "9"
   },
   "devDependencies": {
+    "@intlify/unplugin-vue-i18n": "^4.0.0",
+    "@intlify/vue-i18n-loader": "^4.2.0",
     "@types/node": "^20.14.12",
     "@unhead/vue": "^1.9.16",
     "@vitejs/plugin-vue": "^5.0.5",
