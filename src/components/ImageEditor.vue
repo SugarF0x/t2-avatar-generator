@@ -48,9 +48,16 @@ onMounted(() => {
     image: TemplateImage,
     width: stage.width(),
     height: stage.height(),
-    opacity: .8,
   })
   templateLayer.add(templateImage)
+
+  const hideTemplate = () => { templateImage.opacity(.8) }
+  const showTemplate = () => { templateImage.opacity(1) }
+
+  photo.on('dragstart', hideTemplate)
+  photo.on('dragend', showTemplate)
+  controls.on('transformstart', hideTemplate)
+  controls.on('transformend', showTemplate)
 })
 </script>
 
