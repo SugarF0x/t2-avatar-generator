@@ -39,13 +39,13 @@ function handleDownload() {
             </td>
           </tr>
         </table>
+        <image-editor class="editor" />
+        <p class="instructions">
+          {{ t('instructions.1') }}
+          <span style="color: var(--t2-green)">{{ t('instructions.2') }}</span>
+        </p>
+        <button class="t2 dark download" @click="handleDownload">{{ t('cta.download') }}</button>
       </div>
-      <image-editor class="editor" />
-      <p class="instructions">
-        {{ t('instructions.1') }}
-        <span style="color: var(--t2-green)">{{ t('instructions.2') }}</span>
-      </p>
-      <button class="t2 dark download" @click="handleDownload">{{ t('cta.download') }}</button>
     </div>
   </section>
 </template>

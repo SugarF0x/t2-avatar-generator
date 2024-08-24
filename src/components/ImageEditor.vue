@@ -1,17 +1,28 @@
 <script setup lang="ts">
 import Konva from "konva"
-import { onMounted } from "vue"
-import ImageTemplate from '@/assets/images/shape-logo-white.svg'
+import { onMounted, watch } from "vue"
+import BlackTemplateSource from '@/assets/images/shape-logo-black.svg'
+import WhiteTemplateSource from '@/assets/images/shape-logo-white.svg'
 import AvatarExample from '@/assets/images/avatar-example.jpg'
+import Color from '@/services/color'
 
-// TODO: fix initial load having no image size fucking up calculations
-const [TemplateImage, AvatarImage] = [ImageTemplate, AvatarExample].map(path => {
-  const image = new Image()
-  image.src = path
-  return image
-})
+function loadImage(src: string) {
+  return new Promise<HTMLImageElement>(resolve => {
+    const image = new Image()
+    image.onload = () => resolve(image)
+    image.src = src
+  })
+}
 
-onMounted(() => {
+const images = Promise.all([
+  loadImage(BlackTemplateSource),
+  loadImage(WhiteTemplateSource),
+  loadImage(AvatarExample),
+])
+
+onMounted(async () => {
+  const [BlackTemplate, WhiteTemplate, AvatarImage] = await images
+
   const stage = new Konva.Stage({
     container: 'konva',
     width: 512,
@@ -45,7 +56,7 @@ onMounted(() => {
   controlsLayer.add(controls)
 
   const templateImage = new Konva.Image({
-    image: TemplateImage,
+    image: WhiteTemplate,
     width: stage.width(),
     height: stage.height(),
   })
@@ -58,6 +69,11 @@ onMounted(() => {
   photo.on('dragend', showTemplate)
   controls.on('transformstart', hideTemplate)
   controls.on('transformend', showTemplate)
+
+  watch(Color.isBlack, isBlack => {
+    if (isBlack) templateImage.image(BlackTemplate)
+    else templateImage.image(WhiteTemplate)
+  }, { immediate: true })
 })
 </script>
 
