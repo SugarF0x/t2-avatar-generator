@@ -38,20 +38,36 @@ onMounted(async () => {
   layers.forEach(layer => stage.add(layer))
   const [photoLayer, templateLayer, controlsLayer] = layers
 
-  const photo = new Konva.Image({
-    image: AvatarImage,
-    draggable: true,
-    x: (stage.width() - AvatarImage.width) / 2,
-    y: (stage.height() - AvatarImage.height) / 2,
-  })
-  photoLayer.add(photo)
+  const photoGroup = new Konva.Group({ draggable: true })
+  photoLayer.add(photoGroup)
+
+  for (let x = -1; x <= 1; x++) {
+    for (let y = -1; y <= 1; y++) {
+      photoGroup.add(
+        new Konva.Image({
+          image: AvatarImage,
+          x: stage.width() / 2 + AvatarImage.width * x,
+          y: stage.height() / 2 + AvatarImage.height * y,
+          offsetX: AvatarImage.width / 2,
+          offsetY: AvatarImage.height / 2,
+          scaleX: Math.pow(-1, x + 2),
+          scaleY: Math.pow(-1, y + 2)
+        })
+      )
+    }
+  }
 
   const controls = new Konva.Transformer({
-    nodes: [photo],
+    nodes: [photoGroup],
     centeredScaling: true,
     rotateEnabled: false,
     flipEnabled: false,
-    enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+    enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
+    // scale: { x: 1/3, y: 1/3 },
+    // offset: { x: -AvatarImage.width * 3, y: -AvatarImage.height * 3 },
+    // borderStrokeWidth: 3,
+    // anchorSize: 30,
+    // anchorStrokeWidth: 3,
   })
   controlsLayer.add(controls)
 
@@ -65,8 +81,8 @@ onMounted(async () => {
   const hideTemplate = () => { templateImage.opacity(.8) }
   const showTemplate = () => { templateImage.opacity(1) }
 
-  photo.on('dragstart', hideTemplate)
-  photo.on('dragend', showTemplate)
+  photoGroup.on('dragstart', hideTemplate)
+  photoGroup.on('dragend', showTemplate)
   controls.on('transformstart', hideTemplate)
   controls.on('transformend', showTemplate)
 
