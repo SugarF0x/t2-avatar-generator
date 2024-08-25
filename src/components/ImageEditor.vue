@@ -23,10 +23,12 @@ const images = Promise.all([
 onMounted(async () => {
   const [BlackTemplate, WhiteTemplate, AvatarImage] = await images
 
+  const SIZE = 512
+
   const stage = new Konva.Stage({
     container: 'konva',
-    width: 512,
-    height: 512,
+    width: SIZE,
+    height: SIZE,
   })
 
   const layers = [
@@ -104,6 +106,22 @@ onMounted(async () => {
       background.fill('black')
     }
   }, { immediate: true })
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 650) {
+      stage.scale({ x: .5, y: .5 })
+      stage.width(SIZE * .5)
+      stage.height(SIZE * .5)
+      photoLayer.scale({ x: 2, y: 2 })
+      photoGroup.scale({ x: .5, y: .5 })
+    } else {
+      stage.scale({x: 1, y: 1})
+      stage.width(SIZE)
+      stage.height(SIZE)
+      photoLayer.scale({ x: 1, y: 1 })
+      photoGroup.scale({ x: 1, y: 1 })
+    }
+  })
 })
 </script>
 
