@@ -49,7 +49,13 @@ onMounted(async () => {
   })
   photoLayer.add(background)
 
-  const photoGroup = new Konva.Group({ draggable: true })
+  const photoGroup = new Konva.Group({
+    draggable: true,
+    offsetX: (AvatarImage.width * 3 / 2),
+    offsetY: (AvatarImage.height * 3 / 2),
+    x: (AvatarImage.width * 3 / 2),
+    y: (AvatarImage.height * 3 / 2),
+  })
   photoLayer.add(photoGroup)
 
   for (let x = -1; x <= 1; x++) {
@@ -69,18 +75,29 @@ onMounted(async () => {
   }
 
   const controls = new Konva.Transformer({
-    nodes: [photoGroup],
+    nodes: [photoGroup.children[4]],
     centeredScaling: true,
     rotateEnabled: false,
     flipEnabled: false,
     enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
-    // scale: { x: 1/3, y: 1/3 },
-    // offset: { x: -AvatarImage.width * 3, y: -AvatarImage.height * 3 },
-    // borderStrokeWidth: 3,
-    // anchorSize: 30,
-    // anchorStrokeWidth: 3,
   })
   controlsLayer.add(controls)
+
+  controls.on('transform', () => {
+    const scaleXDelta = photoGroup.children[4].scaleX() - 1
+    const scaleYDelta = photoGroup.children[4].scaleY() - 1
+
+    photoGroup.children[4].scaleX(1)
+    photoGroup.children[4].scaleY(1)
+
+    const newScaleX = photoGroup.scaleX() + scaleXDelta / 3
+    const newScaleY = photoGroup.scaleY() + scaleYDelta / 3
+
+    if (newScaleX < .1 || newScaleY < .1) return
+
+    photoGroup.scaleX(photoGroup.scaleX() + scaleXDelta / 3)
+    photoGroup.scaleY(photoGroup.scaleY() + scaleYDelta / 3)
+  });
 
   const templateImage = new Konva.Image({
     image: WhiteTemplate,
