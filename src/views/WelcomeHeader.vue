@@ -3,10 +3,6 @@ import T2Logo from '@/assets/images/logo-black.svg'
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n()
-
-function handleReady() {
-  // TODO: scroll to wherever
-}
 </script>
 
 <template>
@@ -24,7 +20,9 @@ function handleReady() {
             <span style="color: var(--t2-pink)">{{ t('title.2') }}</span>
           </h1>
           <p>{{ t('body.1') }}</p>
-          <button class="t2 dark" @click="handleReady">{{ t('cta.ready') }}</button>
+          <a href="#avatar-editor">
+            <button class="t2 dark">{{ t('cta.ready') }}</button>
+          </a>
         </div>
         <img src="@/assets/images/illustrations/header-profile.png" alt="profile" class="profile">
       </div>
@@ -94,6 +92,11 @@ function handleReady() {
   @include large {
     border-radius: 30px;
     padding: 50px;
+  }
+
+  a {
+    text-decoration: none;
+    width: fit-content;
   }
 }
 
