@@ -38,6 +38,15 @@ onMounted(async () => {
   layers.forEach(layer => stage.add(layer))
   const [photoLayer, templateLayer, controlsLayer] = layers
 
+  const background = new Konva.Rect({
+    x: 0,
+    y: 0,
+    width: stage.width(),
+    height: stage.height(),
+    fill: 'black'
+  })
+  photoLayer.add(background)
+
   const photoGroup = new Konva.Group({ draggable: true })
   photoLayer.add(photoGroup)
 
@@ -87,8 +96,13 @@ onMounted(async () => {
   controls.on('transformend', showTemplate)
 
   watch(Color.isBlack, isBlack => {
-    if (isBlack) templateImage.image(BlackTemplate)
-    else templateImage.image(WhiteTemplate)
+    if (isBlack) {
+      templateImage.image(BlackTemplate)
+      background.fill('white')
+    } else {
+      templateImage.image(WhiteTemplate)
+      background.fill('black')
+    }
   }, { immediate: true })
 })
 </script>
