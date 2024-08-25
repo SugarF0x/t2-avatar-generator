@@ -4,11 +4,15 @@ import { useI18n } from "vue-i18n"
 import ColorSwitch from "@/components/ColorSwitch.vue"
 import Metrics from "@/services/metrics.ts"
 import ImageEditor from "@/components/ImageEditor.vue"
+import { ref } from "vue"
 
 const { t } = useI18n()
 
+const editor = ref<InstanceType<typeof ImageEditor>>()
+
 function handleDownload() {
   Metrics.log(Metrics.ID.GENERATE_AVATAR)
+  editor.value?.exportData()
 }
 </script>
 
@@ -39,7 +43,7 @@ function handleDownload() {
             </td>
           </tr>
         </table>
-        <image-editor class="editor" />
+        <image-editor ref="editor" class="editor" />
         <p class="instructions">
           {{ t('instructions.1') }}
           <span style="color: var(--t2-green)">{{ t('instructions.2') }}</span>

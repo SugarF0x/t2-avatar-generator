@@ -20,6 +20,21 @@ const images = Promise.all([
   loadImage(AvatarExample),
 ])
 
+let stageExport: undefined | Konva.Stage
+let controllerExport: undefined | Konva.Transformer
+
+function exportData() {
+  controllerExport?.opacity(0)
+  const data = stageExport?.toDataURL()
+  controllerExport?.opacity(1)
+
+  if (!data) return
+  const link = document.createElement("a")
+  link.download = 'avatar.png'
+  link.href = data
+  link.click()
+}
+
 onMounted(async () => {
   const [BlackTemplate, WhiteTemplate, AvatarImage] = await images
 
@@ -30,6 +45,7 @@ onMounted(async () => {
     width: SIZE,
     height: SIZE,
   })
+  stageExport = stage
 
   const layers = [
     new Konva.Layer({ clipFunc: ctx => void ctx.arc(stage.width() / 2, stage.width() / 2, stage.width() / 2, 0, Math.PI * 2, false) }),
@@ -82,6 +98,7 @@ onMounted(async () => {
     enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
   })
   controlsLayer.add(controls)
+  controllerExport = controls
 
   controls.on('transform', () => {
     const scaleXDelta = photoGroup.children[4].scaleX() - 1
@@ -124,22 +141,25 @@ onMounted(async () => {
     }
   }, { immediate: true })
 
-  window.addEventListener('resize', () => {
+  function resize() {
     if (window.innerWidth < 650) {
       stage.scale({ x: .5, y: .5 })
       stage.width(SIZE * .5)
       stage.height(SIZE * .5)
       photoLayer.scale({ x: 2, y: 2 })
-      photoGroup.scale({ x: .5, y: .5 })
     } else {
       stage.scale({x: 1, y: 1})
       stage.width(SIZE)
       stage.height(SIZE)
       photoLayer.scale({ x: 1, y: 1 })
-      photoGroup.scale({ x: 1, y: 1 })
     }
-  })
+  }
+
+  window.addEventListener('resize', resize)
+  resize()
 })
+
+defineExpose({ exportData })
 </script>
 
 <template>
