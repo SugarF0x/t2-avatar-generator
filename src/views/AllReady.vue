@@ -48,6 +48,7 @@ const samples = [Sample1, Sample2]
 .title {
   font-family: "T2 Halvar Breit", sans-serif;
   text-align: center;
+  text-transform: uppercase;
 
   font-size: 24px;
 
