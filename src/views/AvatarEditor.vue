@@ -5,10 +5,36 @@ import ColorSwitch from "@/components/ColorSwitch.vue"
 import Metrics from "@/services/metrics.ts"
 import ImageEditor from "@/components/ImageEditor.vue"
 import { ref } from "vue"
+import Upload from "@/services/upload.ts"
 
 const { t } = useI18n()
 
 const editor = ref<InstanceType<typeof ImageEditor>>()
+
+function handleUpload() {
+  const fileInput = document.createElement('input')
+  fileInput.type = 'file'
+  fileInput.accept = 'image/*'
+
+  fileInput.addEventListener('change', (event) => {
+    const target = event.target as HTMLInputElement
+    if (!target) return
+
+    const file = target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+
+    reader.onload = e => {
+      if (!e.target) return
+      Upload.data.value = String(e.target.result)
+    }
+
+    reader.readAsDataURL(file)
+  })
+
+  fileInput.click()
+}
 
 function handleDownload() {
   Metrics.log(Metrics.ID.GENERATE_AVATAR)
@@ -29,7 +55,7 @@ function handleDownload() {
             </td>
             <td><line-arrow /></td>
             <td>
-              <button class="t2 dark">{{ t('cta.photo') }}</button>
+              <button class="t2 dark" @click="handleUpload">{{ t('cta.photo') }}</button>
             </td>
           </tr>
           <tr>

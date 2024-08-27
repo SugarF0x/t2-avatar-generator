@@ -5,6 +5,7 @@ import BlackTemplateSource from '@/assets/images/shape-logo-black.svg'
 import WhiteTemplateSource from '@/assets/images/shape-logo-white.svg'
 import AvatarExample from '@/assets/images/avatar-example.jpg'
 import Color from '@/services/color'
+import Upload from "@/services/upload.ts"
 
 function loadImage(src: string) {
   return new Promise<HTMLImageElement>(resolve => {
@@ -66,7 +67,6 @@ onMounted(async () => {
   photoLayer.add(background)
 
   const photoGroup = new Konva.Group({
-    draggable: true,
     offsetX: (AvatarImage.width * 3 / 2),
     offsetY: (AvatarImage.height * 3 / 2),
     x: (AvatarImage.width * 3 / 2),
@@ -74,24 +74,7 @@ onMounted(async () => {
   })
   photoLayer.add(photoGroup)
 
-  for (let x = -1; x <= 1; x++) {
-    for (let y = -1; y <= 1; y++) {
-      photoGroup.add(
-        new Konva.Image({
-          image: AvatarImage,
-          x: stage.width() / 2 + AvatarImage.width * x,
-          y: stage.height() / 2 + AvatarImage.height * y,
-          offsetX: AvatarImage.width / 2,
-          offsetY: AvatarImage.height / 2,
-          scaleX: Math.pow(-1, x + 2),
-          scaleY: Math.pow(-1, y + 2)
-        })
-      )
-    }
-  }
-
   const controls = new Konva.Transformer({
-    nodes: [photoGroup.children[4]],
     centeredScaling: true,
     rotateEnabled: false,
     flipEnabled: false,
@@ -141,6 +124,41 @@ onMounted(async () => {
     }
   }, { immediate: true })
 
+  watch(Upload.data, imageData => {
+    if (!imageData) return
+
+    photoGroup.draggable(true)
+    controls.nodes([])
+    photoGroup.children.length = 0
+
+    const image = new Image()
+
+    // TODO: overlap photos a bit to fix black connective lines
+    // TODO: cap max width and height to stage size
+    image.onload = () => {
+      for (let x = -1; x <= 1; x++) {
+        for (let y = -1; y <= 1; y++) {
+          photoGroup.add(
+            new Konva.Image({
+              image: image,
+              x: stage.width() / 2 + image.width * x,
+              y: stage.height() / 2 + image.height * y,
+              offsetX: image.width / 2,
+              offsetY: image.height / 2,
+              scaleX: Math.pow(-1, x + 2),
+              scaleY: Math.pow(-1, y + 2)
+            })
+          )
+        }
+      }
+
+      controls.nodes([photoGroup.children[4]])
+    }
+
+    image.src = imageData
+  })
+
+  // TODO: fix resize reducing image size to 256, perhaps by setting width and height to the element and not the canvas entity
   function resize() {
     if (window.innerWidth < 650) {
       stage.scale({ x: .5, y: .5 })
