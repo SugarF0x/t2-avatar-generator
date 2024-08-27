@@ -25,6 +25,7 @@ const selectedIndex = ref<null | number>(null)
       </div>
       <div class="items">
         <div v-for="(preview, i) in previews"  :key="preview" :class="{ selected: selectedIndex === i}" class="img-wrapper">
+<!--        TODO: see if it can be upscaled to fit width content  -->
           <img :src="preview" alt="preview" @click="selectedIndex = i">
         </div>
       </div>
@@ -92,7 +93,7 @@ const selectedIndex = ref<null | number>(null)
     border: 4px solid var(--t2-green);
 
     @include large {
-      margin: 24px;
+      margin: 16px;
       border: 7px solid var(--t2-green);
     }
   }

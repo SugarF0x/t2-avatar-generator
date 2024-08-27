@@ -3,6 +3,7 @@
 </script>
 
 <template>
+  <!-- TODO: decrease width and round edges -->
   <svg height="50" width="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="arrow">
     <defs>
       <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" markerUnits="strokeWidth">

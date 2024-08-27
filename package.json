@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite-ssg build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:types": "vue-tsc --noEmit"
   },
   "dependencies": {
     "konva": "^9.3.14",
