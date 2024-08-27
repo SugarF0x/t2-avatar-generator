@@ -1,12 +1,14 @@
-import { ViteSSG } from 'vite-ssg/single-page'
 import App from './App.vue'
 import './assets/styles/global.scss'
 import { createI18n } from "vue-i18n"
+import { createApp } from "vue"
 
-const i18n = createI18n({
-  locale: 'ru'
-})
+const app = createApp(App)
 
-export const createApp = ViteSSG(App, ({ app }) => {
-  app.use(i18n)
-})
+app.use(
+  createI18n({
+    locale: 'ru'
+  })
+)
+
+app.mount('#app')
