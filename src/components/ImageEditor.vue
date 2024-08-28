@@ -182,16 +182,16 @@ defineExpose({ exportData })
 @import '@/assets/styles/mixins';
 
 #konva {
-  & > div {
-    transform-origin: top left;
-  }
-
   width: 256px;
   height: 256px;
 
   @include large {
     width: 512px;
     height: 512px;
+  }
+
+  & > div {
+    transform-origin: top left;
   }
 }
 </style>
