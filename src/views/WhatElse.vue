@@ -47,7 +47,9 @@ function handleDownload() {
       </div>
       <div class="items">
         <div v-for="(preview, i) in previews" :key="preview" :class="{ selected: selectedIndex === i}" class="img-wrapper">
-          <video :src="preview" @click="e => handleVideoPress(e, i)" muted />
+          <video @click="e => handleVideoPress(e, i)" muted>
+            <source :src="`${preview}#t=0.1`" type="video/mp4" />
+          </video>
         </div>
       </div>
       <button class="t2 dark" @click="handleDownload">{{ t('cta.download') }}</button>
