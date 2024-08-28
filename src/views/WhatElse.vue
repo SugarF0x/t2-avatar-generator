@@ -1,16 +1,27 @@
 <script setup lang="ts">
-import Preview1 from "@/assets/images/video-previews/1.png"
-import Preview2 from "@/assets/images/video-previews/2.png"
-import Preview3 from "@/assets/images/video-previews/3.png"
-import Preview4 from "@/assets/images/video-previews/4.png"
+import Video1 from "@/assets/videos/1.mp4"
 import { useI18n } from "vue-i18n"
 import { ref } from "vue"
 
 const { t } = useI18n()
 
-const previews = [Preview1, Preview2, Preview3, Preview4]
+const previews = [Video1,Video1,Video1,Video1]
 
 const selectedIndex = ref<null | number>(null)
+let resetLastVideo: null | (() => void) = null
+
+function handleVideoPress(e: MouseEvent, i: number) {
+  const target = e.target as HTMLVideoElement
+  if (!target) return
+
+  resetLastVideo?.()
+  selectedIndex.value = i
+  target.play()
+  resetLastVideo = () => {
+    target.pause()
+    target.currentTime = 0
+  }
+}
 </script>
 
 <template>
@@ -24,8 +35,8 @@ const selectedIndex = ref<null | number>(null)
         <p>{{ t('body.1') }}</p>
       </div>
       <div class="items">
-        <div v-for="(preview, i) in previews"  :key="preview" :class="{ selected: selectedIndex === i}" class="img-wrapper">
-          <img :src="preview" alt="preview" @click="selectedIndex = i">
+        <div v-for="(preview, i) in previews" :key="preview" :class="{ selected: selectedIndex === i}" class="img-wrapper">
+          <video :src="preview" @click="e => handleVideoPress(e, i)" muted />
         </div>
       </div>
       <button class="t2 dark">{{ t('cta.download') }}</button>
@@ -79,7 +90,7 @@ const selectedIndex = ref<null | number>(null)
     width: 20%;
   }
 
-  img {
+  img, video {
     cursor: pointer;
   }
 
