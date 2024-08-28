@@ -2,6 +2,7 @@
 import Video1 from "@/assets/videos/1.mp4"
 import { useI18n } from "vue-i18n"
 import { ref } from "vue"
+import Metrics from "@/services/metrics.ts"
 
 const { t } = useI18n()
 
@@ -22,6 +23,16 @@ function handleVideoPress(e: MouseEvent, i: number) {
     target.currentTime = 0
   }
 }
+
+function handleDownload() {
+  if (selectedIndex.value === null) return
+
+  Metrics.log(Metrics.ID.DOWNLOAD_VIDEO)
+  const link = document.createElement("a")
+  link.download = `t2-${selectedIndex.value + 1}.mp4`
+  link.href = previews[selectedIndex.value]
+  link.click()
+}
 </script>
 
 <template>
@@ -39,7 +50,7 @@ function handleVideoPress(e: MouseEvent, i: number) {
           <video :src="preview" @click="e => handleVideoPress(e, i)" muted />
         </div>
       </div>
-      <button class="t2 dark">{{ t('cta.download') }}</button>
+      <button class="t2 dark" @click="handleDownload">{{ t('cta.download') }}</button>
     </div>
   </section>
 </template>
