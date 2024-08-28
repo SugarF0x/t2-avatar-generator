@@ -53,15 +53,19 @@ section {
     width: min(100%, 1200px);
   }
 
-  background-color: white;
-  color: black;
+  & {
+    background-color: white;
+    color: black;
+  }
 
   &:nth-child(2n) {
     background-color: black;
     color: white;
   }
 
-  --notch-size: 20px;
+  & {
+    --notch-size: 20px;
+  }
 
   &:not(:last-child) {
     margin-bottom: calc(-1 * var(--notch-size));

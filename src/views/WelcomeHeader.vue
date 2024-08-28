@@ -74,7 +74,6 @@ const { t } = useI18n()
   height: 32px;
   border-radius: 10px;
 
-
   @include large {
     height: 124px;
     border-radius: 30px;

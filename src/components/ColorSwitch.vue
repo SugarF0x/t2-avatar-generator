@@ -29,13 +29,15 @@ import Color from '@/services/color'
     --bullet-outline-size: 4px;
   }
 
-  --padding: calc((var(--height) - var(--bullet-size)) / 2);
-  --translation-target: calc((var(--width) - var(--bullet-size) - var(--padding) * 2));
+  & {
+    --padding: calc((var(--height) - var(--bullet-size)) / 2);
+    --translation-target: calc((var(--width) - var(--bullet-size) - var(--padding) * 2));
 
-  width: var(--width);
-  height: var(--height);
-  position: relative;
-  user-select: none;
+    width: var(--width);
+    height: var(--height);
+    position: relative;
+    user-select: none;
+  }
 
   & .bullet {
     width: var(--width);
