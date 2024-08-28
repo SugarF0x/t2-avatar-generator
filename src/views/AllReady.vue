@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import Sample1 from '@/assets/images/processed-examples/1.png'
 import Sample2 from '@/assets/images/processed-examples/2.png'
+import Sample3 from '@/assets/images/processed-examples/3.png'
+import Sample4 from '@/assets/images/processed-examples/4.png'
+import Sample5 from '@/assets/images/processed-examples/5.png'
+import Sample6 from '@/assets/images/processed-examples/6.png'
 import { useI18n } from "vue-i18n"
 
 const { t } = useI18n()
 
-const samples = [Sample1, Sample2]
+const samples = [Sample1, Sample2, Sample5, Sample4, Sample6, Sample3]
 </script>
 
 <template>
@@ -20,7 +24,7 @@ const samples = [Sample1, Sample2]
         <p class="body">{{ t('body.2') }}</p>
       </div>
       <div class="samples">
-        <img v-for="n in 6" :key="n" :src="samples[n % 2]" alt="sample">
+        <img v-for="sample in samples" :key="sample" :src="sample" alt="sample">
       </div>
     </div>
   </section>
