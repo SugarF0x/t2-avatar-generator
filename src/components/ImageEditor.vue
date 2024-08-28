@@ -129,7 +129,6 @@ onMounted(async () => {
 
     const image = new Image()
 
-    // TODO: overlap photos a bit to fix black connective lines
     image.onload = () => {
       const { width, height } = image
 
@@ -138,8 +137,8 @@ onMounted(async () => {
           photoGroup.add(
             new Konva.Image({
               image: image,
-              x: width * x,
-              y: height * y,
+              x: width * x - x,
+              y: height * y - y,
               offsetX: width / 2,
               offsetY: height / 2,
               scaleX: Math.pow(-1, x + 2),
