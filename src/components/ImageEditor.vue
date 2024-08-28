@@ -134,7 +134,6 @@ onMounted(async () => {
     const image = new Image()
 
     // TODO: overlap photos a bit to fix black connective lines
-    // TODO: cap max width and height to stage size
     image.onload = () => {
       for (let x = -1; x <= 1; x++) {
         for (let y = -1; y <= 1; y++) {
@@ -152,7 +151,14 @@ onMounted(async () => {
         }
       }
 
+      const { width, height } = image
+      const xScale = (stage.width() * .9) / width
+      const yScale = (stage.height() * .9) / height
+      const startingScale = Math.min(xScale, yScale)
+
       controls.nodes([photoGroup.children[4]])
+      photoGroup.scaleX(startingScale)
+      photoGroup.scaleY(startingScale)
     }
 
     image.src = imageData
