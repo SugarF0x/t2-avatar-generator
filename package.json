@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "deploy": "ycs3 --profile yc-t2 cp ./dist s3://t2avatar.ru --recursive",
-    "preview": "vite preview",
+    "deploy": "aws s3 --endpoint-url=https://storage.yandexcloud.net --profile yc-t2 cp ./dist s3://t2avatar.ru --recursive",
+    "bd": "yarn build && yarn deploy",
     "test:types": "vue-tsc --noEmit"
   },
   "dependencies": {
