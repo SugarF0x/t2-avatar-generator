@@ -3,7 +3,6 @@ import Konva from "konva"
 import { onMounted, watch } from "vue"
 import BlackTemplateSource from '@/assets/images/shape-logo-black.svg'
 import WhiteTemplateSource from '@/assets/images/shape-logo-white.svg'
-import AvatarExample from '@/assets/images/avatar-example.jpg'
 import Color from '@/services/color'
 import Upload from "@/services/upload.ts"
 
@@ -17,8 +16,7 @@ function loadImage(src: string) {
 
 const images = Promise.all([
   loadImage(BlackTemplateSource),
-  loadImage(WhiteTemplateSource),
-  loadImage(AvatarExample),
+  loadImage(WhiteTemplateSource)
 ])
 
 let stageExport: undefined | Konva.Stage
@@ -37,7 +35,7 @@ function exportData() {
 }
 
 onMounted(async () => {
-  const [BlackTemplate, WhiteTemplate, AvatarImage] = await images
+  const [BlackTemplate, WhiteTemplate] = await images
 
   const SIZE = 512
 
@@ -66,12 +64,7 @@ onMounted(async () => {
   })
   photoLayer.add(background)
 
-  const photoGroup = new Konva.Group({
-    offsetX: (AvatarImage.width * 3 / 2),
-    offsetY: (AvatarImage.height * 3 / 2),
-    x: (AvatarImage.width * 3 / 2),
-    y: (AvatarImage.height * 3 / 2),
-  })
+  const photoGroup = new Konva.Group()
   photoLayer.add(photoGroup)
 
   const controls = new Konva.Transformer({
@@ -84,6 +77,9 @@ onMounted(async () => {
   controllerExport = controls
 
   controls.on('transform', () => {
+    const imageWidth = photoGroup.children[4].width()
+    const imageHeight = photoGroup.children[4].height()
+
     const scaleXDelta = photoGroup.children[4].scaleX() - 1
     const scaleYDelta = photoGroup.children[4].scaleY() - 1
 
@@ -93,7 +89,7 @@ onMounted(async () => {
     const newScaleX = photoGroup.scaleX() + scaleXDelta / 3
     const newScaleY = photoGroup.scaleY() + scaleYDelta / 3
 
-    if (newScaleX < .1 || newScaleY < .1) return
+    if (newScaleX * imageWidth < 64 || newScaleY * imageHeight < 64) return
 
     photoGroup.scaleX(photoGroup.scaleX() + scaleXDelta / 3)
     photoGroup.scaleY(photoGroup.scaleY() + scaleYDelta / 3)
@@ -135,15 +131,17 @@ onMounted(async () => {
 
     // TODO: overlap photos a bit to fix black connective lines
     image.onload = () => {
+      const { width, height } = image
+
       for (let x = -1; x <= 1; x++) {
         for (let y = -1; y <= 1; y++) {
           photoGroup.add(
             new Konva.Image({
               image: image,
-              x: stage.width() / 2 + image.width * x,
-              y: stage.height() / 2 + image.height * y,
-              offsetX: image.width / 2,
-              offsetY: image.height / 2,
+              x: width * x,
+              y: height * y,
+              offsetX: width / 2,
+              offsetY: height / 2,
               scaleX: Math.pow(-1, x + 2),
               scaleY: Math.pow(-1, y + 2)
             })
@@ -151,14 +149,18 @@ onMounted(async () => {
         }
       }
 
-      const { width, height } = image
+      controls.nodes([photoGroup.children[4]])
+
       const xScale = (stage.width() * .9) / width
       const yScale = (stage.height() * .9) / height
       const startingScale = Math.min(xScale, yScale)
 
-      controls.nodes([photoGroup.children[4]])
       photoGroup.scaleX(startingScale)
       photoGroup.scaleY(startingScale)
+      photoGroup.offsetX(photoGroup.width() / 2)
+      photoGroup.offsetY(photoGroup.height() / 2)
+      photoGroup.x(stage.width() / 2)
+      photoGroup.y(stage.height() / 2)
     }
 
     image.src = imageData
