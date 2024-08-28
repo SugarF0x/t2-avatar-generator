@@ -95,6 +95,9 @@ function handleDownload() {
 
 .img-wrapper {
   position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+
   width: 40%;
 
   @include large {
