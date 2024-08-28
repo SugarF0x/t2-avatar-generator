@@ -67,6 +67,9 @@ onMounted(async () => {
   const photoGroup = new Konva.Group()
   photoLayer.add(photoGroup)
 
+  const mirrorGroup = new Konva.Group()
+  photoGroup.add(mirrorGroup)
+
   const controls = new Konva.Transformer({
     centeredScaling: true,
     rotateEnabled: false,
@@ -77,22 +80,10 @@ onMounted(async () => {
   controllerExport = controls
 
   controls.on('transform', () => {
-    const imageWidth = photoGroup.children[4].width()
-    const imageHeight = photoGroup.children[4].height()
+    const controlPhoto = photoGroup.children[1]
 
-    const scaleXDelta = photoGroup.children[4].scaleX() - 1
-    const scaleYDelta = photoGroup.children[4].scaleY() - 1
-
-    photoGroup.children[4].scaleX(1)
-    photoGroup.children[4].scaleY(1)
-
-    const newScaleX = photoGroup.scaleX() + scaleXDelta / 3
-    const newScaleY = photoGroup.scaleY() + scaleYDelta / 3
-
-    if (newScaleX * imageWidth < 64 || newScaleY * imageHeight < 64) return
-
-    photoGroup.scaleX(photoGroup.scaleX() + scaleXDelta / 3)
-    photoGroup.scaleY(photoGroup.scaleY() + scaleYDelta / 3)
+    mirrorGroup.scaleX(controlPhoto.scaleX())
+    mirrorGroup.scaleY(controlPhoto.scaleY())
   });
 
   const templateImage = new Konva.Image({
@@ -125,7 +116,10 @@ onMounted(async () => {
 
     photoGroup.draggable(true)
     controls.nodes([])
-    photoGroup.children.length = 0
+    photoGroup.children = [mirrorGroup]
+    mirrorGroup.children.length = 0
+    mirrorGroup.scaleX(1)
+    mirrorGroup.scaleY(1)
 
     const image = new Image()
 
@@ -134,7 +128,7 @@ onMounted(async () => {
 
       for (let x = -1; x <= 1; x++) {
         for (let y = -1; y <= 1; y++) {
-          photoGroup.add(
+          const konvaImage = (
             new Konva.Image({
               image: image,
               x: width * x - x,
@@ -145,10 +139,13 @@ onMounted(async () => {
               scaleY: Math.pow(-1, y + 2)
             })
           )
+
+          if (!x && !y) photoGroup.add(konvaImage)
+          else mirrorGroup.add(konvaImage)
         }
       }
 
-      controls.nodes([photoGroup.children[4]])
+      controls.nodes([photoGroup.children[1]])
 
       const xScale = (stage.width() * .9) / width
       const yScale = (stage.height() * .9) / height
