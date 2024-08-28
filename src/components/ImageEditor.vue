@@ -165,19 +165,9 @@ onMounted(async () => {
     image.src = imageData
   })
 
-  // TODO: fix resize reducing image size to 256, perhaps by setting width and height to the element and not the canvas entity
   function resize() {
-    if (window.innerWidth < 650) {
-      stage.scale({ x: .5, y: .5 })
-      stage.width(SIZE * .5)
-      stage.height(SIZE * .5)
-      photoLayer.scale({ x: 2, y: 2 })
-    } else {
-      stage.scale({x: 1, y: 1})
-      stage.width(SIZE)
-      stage.height(SIZE)
-      photoLayer.scale({ x: 1, y: 1 })
-    }
+    const { style } = stage.getContent()
+    style.scale = String(1 - Number(window.innerWidth < 650) * .5)
   }
 
   window.addEventListener('resize', resize)
@@ -191,6 +181,20 @@ defineExpose({ exportData })
   <div id="konva" />
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import '@/assets/styles/mixins';
 
+#konva {
+  & > div {
+    transform-origin: top left;
+  }
+
+  width: 256px;
+  height: 256px;
+
+  @include large {
+    width: 512px;
+    height: 512px;
+  }
+}
 </style>
