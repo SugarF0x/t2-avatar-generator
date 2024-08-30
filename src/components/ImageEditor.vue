@@ -164,7 +164,13 @@ onMounted(async () => {
 
   function resize() {
     const { style } = stage.getContent()
-    style.scale = String(1 - Number(window.innerWidth < 650) * .5)
+    const isSmall = Number(window.innerWidth < 650)
+
+    style.scale = String(1 - Number(isSmall) * .5)
+
+    controls.anchorStrokeWidth(1 + Number(isSmall) * 4)
+    controls.borderStrokeWidth(1 + Number(isSmall) * 4)
+    controls.anchorSize(10 + Number(isSmall) * 20)
   }
 
   window.addEventListener('resize', resize)
