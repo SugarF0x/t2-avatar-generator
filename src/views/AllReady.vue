@@ -9,7 +9,7 @@ import { useI18n } from "vue-i18n"
 
 const { t } = useI18n()
 
-const samples = [Sample1, Sample2, Sample5, Sample4, Sample6, Sample3]
+const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
 </script>
 
 <template>
