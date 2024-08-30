@@ -75,6 +75,7 @@ function handleDownload() {
           <span style="color: var(--t2-green)">{{ t('instructions.2') }}</span>
         </p>
         <button class="t2 dark download" @click="handleDownload">{{ t('cta.download') }}</button>
+        <small class="prompt">{{ t('cta.download.prompt') }}</small>
       </div>
     </div>
   </section>
@@ -166,17 +167,28 @@ function handleDownload() {
     padding: 75px 50px;
   }
 }
+
+.prompt {
+  opacity: .5;
+  text-align: center;
+  margin-top: 10px;
+
+  @include large {
+    font-size: .5em;
+  }
+}
 </style>
 
 <i18n>
 ru:
   title: воспользуйтесь конструктором
   step.1.title: 'Шаг 1:'
-  step.1.description: выберите фото
+  step.1.description: выберите портретное фото из галереи
   step.2.title: 'Шаг 2:'
-  step.2.description: выберите цвет
+  step.2.description: выберите цвет фона, переключая кнопку
   instructions.1: Вы можете менять расположение фото, поворачивать, увеличивать или уменьшать так,
   instructions.2: как вам нравится
   cta.photo: выбрать фото
   cta.download: мне нравится, скачать!
+  cta.download.prompt: Ищите фото в загрузках своего смартфона
 </i18n>

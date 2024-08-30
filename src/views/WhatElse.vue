@@ -52,7 +52,10 @@ function handleDownload() {
           </video>
         </div>
       </div>
-      <button class="t2 dark" @click="handleDownload">{{ t('cta.download') }}</button>
+      <div class="button-container">
+        <button class="t2 dark" @click="handleDownload">{{ t('cta.download') }}</button>
+        <small class="prompt">{{ t('cta.download.prompt') }}</small>
+      </div>
     </div>
   </section>
 </template>
@@ -153,12 +156,23 @@ function handleDownload() {
     color: var(--t2-green);
   }
 }
+
+.prompt {
+  opacity: .5;
+  text-align: center;
+  margin-top: 10px;
+
+  @include large {
+    font-size: .5em;
+  }
+}
 </style>
 
 <i18n>
 ru:
   title.1: что еще
   title.2: интересного?
-  body.1: В поддержку ребрендинга вы можете скачать ролик  и опубликовать его в сторис
+  body.1: Вы можете скачать CGI-ролик и опубликовать его в своих Telegram-сторис
   cta.download: скачать
+  cta.download.prompt: Ищите видео в загрузках своего смартфона
 </i18n>
