@@ -56,6 +56,14 @@ function handleDownload() {
         <button class="t2 dark" @click="handleDownload">{{ t('cta.download') }}</button>
         <small class="prompt">{{ t('cta.download.prompt') }}</small>
       </div>
+      <div class="footer">
+        <span>
+          {{ t('footer.body.1') }}:
+          <a :href="'mailto:' + t('footer.email')">{{ t('footer.email') }}</a>
+          <br>
+          {{ t('footer.body.2') }}
+        </span>
+      </div>
     </div>
   </section>
 </template>
@@ -166,6 +174,24 @@ function handleDownload() {
     font-size: .5em;
   }
 }
+
+.footer {
+  font-size: .3em;
+
+  text-align: center;
+  opacity: .5;
+
+  @include large {
+    text-align: right;
+    max-width: 40%;
+
+    margin-left: auto;
+  }
+
+  a {
+    color: var(--t2-cyan);
+  }
+}
 </style>
 
 <i18n>
@@ -175,4 +201,7 @@ ru:
   body.1: Вы можете скачать CGI-ролик и опубликовать его в своих Telegram-сторис
   cta.download: скачать
   cta.download.prompt: Ищите видео в загрузках своего смартфона
+  footer.body.1: По всем техническим вопросам обращайтесь на почту
+  footer.body.2: Вам ответят в ближайшее время
+  footer.email: t2avatar{'@'}affect.ru
 </i18n>
