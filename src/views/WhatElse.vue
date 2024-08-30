@@ -169,10 +169,7 @@ function handleDownload() {
   opacity: .5;
   text-align: center;
   margin-top: 10px;
-
-  @include large {
-    font-size: .5em;
-  }
+  font-size: .5em;
 }
 
 .footer {
