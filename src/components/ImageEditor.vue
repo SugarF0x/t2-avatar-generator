@@ -125,6 +125,7 @@ onMounted(async () => {
 
     image.onload = () => {
       const { width, height } = image
+      if (!width || !height) return
 
       for (let x = -1; x <= 1; x++) {
         for (let y = -1; y <= 1; y++) {
@@ -160,7 +161,7 @@ onMounted(async () => {
     }
 
     image.src = imageData
-  })
+  }, { immediate: true })
 
   function resize() {
     const { style } = stage.getContent()
