@@ -23,8 +23,6 @@ let stageExport: undefined | Konva.Stage
 let controllerExport: undefined | Konva.Transformer
 
 function exportData() {
-  // TODO: experiment with express server upload-download
-
   controllerExport?.opacity(0)
   const data = stageExport?.toDataURL()
   controllerExport?.opacity(1)

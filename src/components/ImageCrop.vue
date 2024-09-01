@@ -109,14 +109,14 @@ onMounted(() => {
   function crop() {
     if (!konvaImage) return
 
-    const cropX = cropRect.x();
-    const cropY = cropRect.y();
-    const cropWidth = cropRect.width() * cropRect.scaleX() / konvaImage.scaleX();
-    const cropHeight = cropRect.height() * cropRect.scaleY() / konvaImage.scaleY();
+    const cropX = cropRect.x() / konvaImage.scaleX()
+    const cropY = cropRect.y() / konvaImage.scaleY()
+    const cropWidth = cropRect.width() * cropRect.scaleX() / konvaImage.scaleX()
+    const cropHeight = cropRect.height() * cropRect.scaleY() / konvaImage.scaleY()
 
     konvaImage.crop({
-      x: cropX - konvaImage.x(),
-      y: cropY - konvaImage.y(),
+      x: cropX,
+      y: cropY,
       width: cropWidth,
       height: cropHeight,
     })
@@ -159,6 +159,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+// TODO: limit the max size
 #crop-editor {
   position: fixed;
   top: 0;
