@@ -14,7 +14,10 @@ function abort() {
 
 const image = ref(new Image())
 watch(Upload.rawData, value => {
-  if (!value) return
+  if (!value) {
+    image.value = new Image()
+    return
+  }
 
   const newImage = new Image()
   newImage.onload = () => image.value = newImage
@@ -68,17 +71,32 @@ onMounted(() => {
   let konvaImage: Konva.Image | undefined = undefined
 
   watch(image, image => {
+    imageLayer.children.length = 0
+    const { width, height } = image
+    if (!width && !height) return
+
+    const aspectRatio = height / width
+    const konvaElement = document.querySelector('#konva-crop') as HTMLDivElement
+
+    konvaElement.style.setProperty('--aspect-ratio', String(aspectRatio))
+    stage.height(SIZE * aspectRatio)
+
     cropRect.scaleX(1)
     cropRect.scaleY(1)
     cropRect.x(stage.width() * .05)
     cropRect.y(stage.width() * .05)
+    cropRect.width(stage.width() * .9)
+    cropRect.height(stage.height() * .9)
 
-    if (!image) {
-      konvaImage = undefined
-      return
-    }
+    const xScale = stage.width() / width
+    const yScale = stage.height() / height
+    const imageScale = Math.min(xScale, yScale)
 
-    konvaImage = new Konva.Image({ image })
+    konvaImage = new Konva.Image({
+      image,
+      scaleX: imageScale,
+      scaleY: imageScale,
+    })
     imageLayer.add(konvaImage)
   })
 
@@ -87,8 +105,8 @@ onMounted(() => {
 
     const cropX = cropRect.x();
     const cropY = cropRect.y();
-    const cropWidth = cropRect.width() * cropRect.scaleX();
-    const cropHeight = cropRect.height() * cropRect.scaleY();
+    const cropWidth = cropRect.width() * cropRect.scaleX() / konvaImage.scaleX();
+    const cropHeight = cropRect.height() * cropRect.scaleY() / konvaImage.scaleY();
 
     konvaImage.crop({
       x: cropX - konvaImage.x(),
@@ -171,12 +189,14 @@ button.close {
 @import '@/assets/styles/mixins';
 
 #konva-crop {
+  --aspect-ratio: 1;
+
   width: 256px;
-  height: 256px;
+  height: calc(256px * var(--aspect-ratio));
 
   @include large {
     width: 512px;
-    height: 512px;
+    height: calc(512px * var(--aspect-ratio));
   }
 
   & > div {
