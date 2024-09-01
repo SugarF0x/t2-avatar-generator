@@ -6,12 +6,15 @@ import Metrics from "@/services/metrics.ts"
 import ImageEditor from "@/components/ImageEditor.vue"
 import { ref } from "vue"
 import Upload from "@/services/upload.ts"
+import ImageCrop from "@/components/ImageCrop.vue"
 
 const { t } = useI18n()
 
 const editor = ref<InstanceType<typeof ImageEditor>>()
 
 function handleUpload() {
+  Upload.data.value = null
+
   const fileInput = document.createElement('input')
   fileInput.type = 'file'
   fileInput.accept = 'image/*'
@@ -27,7 +30,7 @@ function handleUpload() {
 
     reader.onload = e => {
       if (!e.target) return
-      Upload.data.value = String(e.target.result)
+      Upload.rawData.value = String(e.target.result)
     }
 
     reader.readAsDataURL(file)
@@ -45,6 +48,7 @@ function handleDownload() {
 <template>
   <section id="avatar-editor">
     <div class="container">
+      <image-crop />
       <h2 class="title">{{ t('title') }}</h2>
       <div class="content">
         <table>
@@ -157,7 +161,7 @@ function handleDownload() {
 }
 
 .content {
-  background-color: #1E1E1E;
+  background-color: var(--t2-grey);
 
   border-radius: 7px;
   padding: 10px;

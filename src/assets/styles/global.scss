@@ -9,6 +9,10 @@
 
 html {
   scroll-behavior: smooth;
+
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
 }
 
 html, body {

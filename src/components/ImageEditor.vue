@@ -23,6 +23,8 @@ let stageExport: undefined | Konva.Stage
 let controllerExport: undefined | Konva.Transformer
 
 function exportData() {
+  // TODO: experiment with express server upload-download
+
   controllerExport?.opacity(0)
   const data = stageExport?.toDataURL()
   controllerExport?.opacity(1)
@@ -112,14 +114,14 @@ onMounted(async () => {
   }, { immediate: true })
 
   watch(Upload.data, imageData => {
-    if (!imageData) return
-
-    photoGroup.draggable(true)
     controls.nodes([])
     photoGroup.children = [mirrorGroup]
     mirrorGroup.children.length = 0
     mirrorGroup.scaleX(1)
     mirrorGroup.scaleY(1)
+    photoGroup.draggable(!!imageData)
+
+    if (!imageData) return
 
     const image = new Image()
 
