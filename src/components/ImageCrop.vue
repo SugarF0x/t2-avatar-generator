@@ -58,12 +58,12 @@ onMounted(() => {
   })
   controlsLayer.add(cropRect)
 
-  const tr = new Konva.Transformer({
+  const controls = new Konva.Transformer({
     nodes: [cropRect],
     rotateEnabled: false,
     keepRatio: false
   })
-  controlsLayer.add(tr)
+  controlsLayer.add(controls)
 
   let konvaImage: Konva.Image | undefined = undefined
 
@@ -107,6 +107,20 @@ onMounted(() => {
   }
 
   cropFunc.value = crop
+
+  function resize() {
+    const { style } = stage.getContent()
+    const isSmall = Number(window.innerWidth < 650)
+
+    style.scale = String(1 - Number(isSmall) * .5)
+
+    controls.anchorStrokeWidth(1 + Number(isSmall) * 4)
+    controls.borderStrokeWidth(1 + Number(isSmall) * 4)
+    controls.anchorSize(10 + Number(isSmall) * 20)
+  }
+
+  window.addEventListener('resize', resize)
+  resize()
 })
 </script>
 
@@ -150,6 +164,24 @@ onMounted(() => {
 button.close {
   margin-left: auto;
   padding: 4px 8px;
+}
+</style>
+
+<style lang="scss">
+@import '@/assets/styles/mixins';
+
+#konva-crop {
+  width: 256px;
+  height: 256px;
+
+  @include large {
+    width: 512px;
+    height: 512px;
+  }
+
+  & > div {
+    transform-origin: top left;
+  }
 }
 </style>
 
