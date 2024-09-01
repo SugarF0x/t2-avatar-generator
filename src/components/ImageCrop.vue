@@ -44,22 +44,30 @@ onMounted(() => {
   const darkOverlay = new Konva.Rect({
     x: 0,
     y: 0,
-    width: stage.width(),
-    height: stage.height(),
     fill: 'rgba(0, 0, 0, .5)',
   })
   controlsLayer.add(darkOverlay)
 
+  function resizeDarkOverlay() {
+    darkOverlay.width(stage.width())
+    darkOverlay.height(stage.height())
+  }
+  resizeDarkOverlay()
+
   const cropRect = new Konva.Rect({
-    x: stage.width() * .05,
-    y: stage.width() * .05,
-    width: stage.width() * .9,
-    height: stage.height() * .9,
     fill: 'red',
     draggable: true,
     globalCompositeOperation: 'destination-out',
   })
   controlsLayer.add(cropRect)
+
+  function resizeCropRect() {
+    cropRect.x(stage.width() * .05)
+    cropRect.y(stage.width() * .05)
+    cropRect.width(stage.width() * .9)
+    cropRect.height(stage.height() * .9)
+  }
+  resizeCropRect()
 
   const controls = new Konva.Transformer({
     nodes: [cropRect],
@@ -80,13 +88,11 @@ onMounted(() => {
 
     konvaElement.style.setProperty('--aspect-ratio', String(aspectRatio))
     stage.height(SIZE * aspectRatio)
+    resizeDarkOverlay()
 
     cropRect.scaleX(1)
     cropRect.scaleY(1)
-    cropRect.x(stage.width() * .05)
-    cropRect.y(stage.width() * .05)
-    cropRect.width(stage.width() * .9)
-    cropRect.height(stage.height() * .9)
+    resizeCropRect()
 
     const xScale = stage.width() / width
     const yScale = stage.height() / height
