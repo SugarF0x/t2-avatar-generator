@@ -117,19 +117,19 @@ onMounted(() => {
     const cropWidth = cropRect.width() * cropRect.scaleX() / konvaImage.scaleX()
     const cropHeight = cropRect.height() * cropRect.scaleY() / konvaImage.scaleY()
 
-    konvaImage.crop({
-      x: cropX,
-      y: cropY,
-      width: cropWidth,
-      height: cropHeight,
-    })
+    const imageCrop = new Konva.Image({ image: image.value })
+      .crop({
+        x: cropX,
+        y: cropY,
+        width: cropWidth,
+        height: cropHeight,
+      })
+      .x(cropX)
+      .y(cropY)
+      .width(cropWidth)
+      .height(cropHeight)
 
-    konvaImage.width(cropWidth)
-    konvaImage.height(cropHeight)
-    konvaImage.x(cropX)
-    konvaImage.y(cropY)
-
-    Upload.data.value = konvaImage.toDataURL()
+    Upload.data.value = imageCrop.toDataURL()
     Upload.rawData.value = null
   }
 
