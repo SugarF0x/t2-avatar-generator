@@ -53,7 +53,7 @@ function handleDownload() {
         </div>
       </div>
       <div class="button-container">
-        <button class="t2 dark" @click="handleDownload">{{ t('cta.download') }}</button>
+        <button class="t2 dark" @click="handleDownload" :disabled="selectedIndex === null">{{ t('cta.download') }}</button>
         <small class="prompt">{{ t('cta.download.prompt') }}</small>
       </div>
       <div class="footer">

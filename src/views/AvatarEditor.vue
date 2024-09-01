@@ -78,7 +78,7 @@ function handleDownload() {
           {{ t('instructions.1') }}
           <span style="color: var(--t2-green)">{{ t('instructions.2') }}</span>
         </p>
-        <button class="t2 dark download" @click="handleDownload">{{ t('cta.download') }}</button>
+        <button class="t2 dark download" @click="handleDownload" :disabled="!Upload.data.value">{{ t('cta.download') }}</button>
         <small class="prompt">{{ t('cta.download.prompt') }}</small>
       </div>
     </div>
