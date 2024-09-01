@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Upload from "@/services/upload.ts"
-import { computed, ref, watch } from "vue"
+import { computed, onMounted, ref, watch } from "vue"
 import Konva from "konva"
 import { useI18n } from "vue-i18n"
 
@@ -23,10 +23,7 @@ watch(Upload.rawData, value => {
 
 const cropFunc = ref<() => void>(() => {})
 
-// TODO: move most logic to on mounted
-watch(image, image => {
-  if (!image) return
-
+onMounted(() => {
   const SIZE = 512
 
   const stage = new Konva.Stage({
@@ -37,9 +34,6 @@ watch(image, image => {
 
   const imageLayer = new Konva.Layer()
   stage.add(imageLayer)
-
-  const konvaImage = new Konva.Image({ image: image })
-  imageLayer.add(konvaImage)
 
   const controlsLayer = new Konva.Layer()
   stage.add(controlsLayer)
@@ -71,7 +65,26 @@ watch(image, image => {
   })
   controlsLayer.add(tr)
 
+  let konvaImage: Konva.Image | undefined = undefined
+
+  watch(image, image => {
+    cropRect.scaleX(1)
+    cropRect.scaleY(1)
+    cropRect.x(stage.width() * .05)
+    cropRect.y(stage.width() * .05)
+
+    if (!image) {
+      konvaImage = undefined
+      return
+    }
+
+    konvaImage = new Konva.Image({ image })
+    imageLayer.add(konvaImage)
+  })
+
   function crop() {
+    if (!konvaImage) return
+
     const cropX = cropRect.x();
     const cropY = cropRect.y();
     const cropWidth = cropRect.width() * cropRect.scaleX();
