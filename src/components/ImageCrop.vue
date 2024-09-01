@@ -63,7 +63,7 @@ onMounted(() => {
 
   function resizeCropRect() {
     cropRect.x(stage.width() * .05)
-    cropRect.y(stage.width() * .05)
+    cropRect.y(stage.height() * .05)
     cropRect.width(stage.width() * .9)
     cropRect.height(stage.height() * .9)
   }
@@ -83,11 +83,14 @@ onMounted(() => {
     const { width, height } = image
     if (!width && !height) return
 
-    const aspectRatio = height / width
-    const konvaElement = document.querySelector('#konva-crop') as HTMLDivElement
+    const aspectRatioX = Math.min(width / height, 1)
+    const aspectRatioY = Math.min(height / width, 1)
 
-    konvaElement.style.setProperty('--aspect-ratio', String(aspectRatio))
-    stage.height(SIZE * aspectRatio)
+    const konvaElement = document.querySelector('#konva-crop') as HTMLDivElement
+    konvaElement.style.setProperty('--aspect-ratio-x', String(aspectRatioX))
+    konvaElement.style.setProperty('--aspect-ratio-y', String(aspectRatioY))
+    stage.width(SIZE * aspectRatioX)
+    stage.height(SIZE * aspectRatioY)
     resizeDarkOverlay()
 
     cropRect.scaleX(1)
@@ -159,7 +162,6 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-// TODO: limit the max size
 #crop-editor {
   position: fixed;
   top: 0;
@@ -184,6 +186,7 @@ onMounted(() => {
   border-radius: 24px;
   padding: 24px;
   gap: 16px;
+  align-items: center;
 }
 
 button.close {
@@ -196,14 +199,15 @@ button.close {
 @import '@/assets/styles/mixins';
 
 #konva-crop {
-  --aspect-ratio: 1;
+  --aspect-ratio-x: 1;
+  --aspect-ratio-y: 1;
 
-  width: 256px;
-  height: calc(256px * var(--aspect-ratio));
+  width: calc(256px * var(--aspect-ratio-x));
+  height: calc(256px * var(--aspect-ratio-y));
 
   @include large {
-    width: 512px;
-    height: calc(512px * var(--aspect-ratio));
+    width: calc(512px * var(--aspect-ratio-x));
+    height: calc(512px * var(--aspect-ratio-y));
   }
 
   & > div {
