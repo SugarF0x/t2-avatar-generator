@@ -173,17 +173,9 @@ function handleDownload() {
 }
 
 .footer {
-  font-size: .3em;
-
+  font-size: .4em;
   text-align: center;
   opacity: .5;
-
-  @include large {
-    text-align: right;
-    max-width: 40%;
-
-    margin-left: auto;
-  }
 
   a {
     color: var(--t2-cyan);
