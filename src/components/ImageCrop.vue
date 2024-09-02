@@ -58,6 +58,11 @@ onMounted(() => {
     fill: 'red',
     draggable: true,
     globalCompositeOperation: 'destination-out',
+    dragBoundFunc(pos) {
+      const x = Math.max(0, Math.min(stage.width() - this.width() * this.scaleX(), pos.x))
+      const y = Math.max(0, Math.min(stage.height() - this.height() * this.scaleY(), pos.y))
+      return { x, y }
+    }
   })
   controlsLayer.add(cropRect)
 
