@@ -216,5 +216,5 @@ en:
   cta.photo: select image
   cta.download: I like it, download!
   cta.download.prompt: Find the photo in your browser downloads directory
-  prompt.telegram: "It seems that you’ve opened this page through Telegram’s built-in browser. To use the builder, please open the page in another browser: tap the menu button at the top of the screen."
+  prompt.telegram: "It seems that you’ve opened this page through Telegram’s built-in browser. To use the editor, please open the page in another browser: tap the menu button at the top of the screen."
 </i18n>
