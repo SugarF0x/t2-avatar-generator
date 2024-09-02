@@ -16,10 +16,7 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
   <section id="all-ready">
     <div class="container">
       <div class="text">
-        <h2 class="title">
-          {{ t('title.1') }}
-          <span>{{ t('title.2') }}</span>
-        </h2>
+        <h2 class="title">{{ t('title') }}</h2>
         <p class="body">{{ t('body.1') }}</p>
         <p class="body">{{ t('body.2') }}</p>
       </div>
@@ -53,15 +50,12 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
   font-family: "T2 Halvar Breit", sans-serif;
   text-align: center;
   text-transform: uppercase;
+  color: var(--t2-pink);
 
   font-size: 24px;
 
   @include large {
     font-size: 50px;
-  }
-
-  span {
-    color: var(--t2-pink)
   }
 }
 
@@ -106,13 +100,11 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
 
 <i18n>
 ru:
-  title.1: ФОТО
-  title.2: ГОТОВО!
-  body.1: Ваша аватарка на новом уровне, теперь сохраните ее в фотопленку из загрузок браузера и поставьте на аватарку в своем Telegram.
+  title: ГОТОВО!
+  body.1: Ваше фото теперь на новом уровне. Сохраните его в фотоплёнку из загрузок браузера и поставьте на аватарку в своем Telegram
   body.2: "Благодарим вас! А вот и те, кто уже поддержал ребрендинг t2:"
 en:
-  title.1: PHOTO IS
-  title.2: READY!
-  body.1: You avatar is on a new level, now move it to the Photos from your browser downloads and set it as your Telegram avatar.
+  title: ALL DONE!
+  body.1: You photo is now on a new level. Move it to the Photos from your browser downloads and set it as your Telegram profile picture.
   body.2: "Thank you! Here are the ones who have already supported t2 rebranding:"
 </i18n>
