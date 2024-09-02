@@ -5,10 +5,17 @@ import { createApp } from "vue"
 
 const app = createApp(App)
 
-app.use(
-  createI18n({
-    locale: 'ru'
-  })
-)
+enum Locale {
+  RU = 'ru',
+  EN = 'en',
+}
+
+const DEFAULT_LOCALE = Locale.RU
+const supportedLocales = new Set(Object.values(Locale))
+
+const userLocale = (navigator.language?.split('-')[0]) as Locale
+const locale = supportedLocales.has(userLocale) ? userLocale : DEFAULT_LOCALE
+
+app.use(createI18n({ locale }))
 
 app.mount('#app')

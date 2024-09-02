@@ -195,4 +195,15 @@ ru:
   cta.photo: выбрать фото
   cta.download: мне нравится, скачать!
   cta.download.prompt: Ищите фото в загрузках своего смартфона
+en:
+  title: use the editor
+  step.1.title: 'Step 1:'
+  step.1.description: select an image from your photo gallery
+  step.2.title: 'Step 2:'
+  step.2.description: select a color by toggling the switch
+  instructions.1: You can adjust the position, rotation and scale of the image
+  instructions.2: to your liking
+  cta.photo: select image
+  cta.download: I like it, download!
+  cta.download.prompt: Find the photo in your smartphone downloads directory
 </i18n>

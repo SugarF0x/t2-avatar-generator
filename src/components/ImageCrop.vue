@@ -219,4 +219,6 @@ button.close {
 <i18n>
 ru:
   cta.ready: Обрезать
+en:
+  cta.ready: Crop
 </i18n>

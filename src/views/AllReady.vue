@@ -110,4 +110,9 @@ ru:
   title.2: ГОТОВО!
   body.1: Ваша аватарка на новом уровне, теперь сохраните ее в фотопленку из загрузок браузера и поставьте на аватарку в своем Telegram.
   body.2: "Благодарим вас! А вот и те, кто уже поддержал ребрендинг t2:"
+en:
+  title.1: PHOTO IS
+  title.2: READY!
+  body.1: You avatar is on a new level, now move it to the Photos from your browser downloads and set it as your Telegram avatar.
+  body.2: "Thank you! Here are the ones who have already supported t2 rebranding:"
 </i18n>

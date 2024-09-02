@@ -201,4 +201,13 @@ ru:
   footer.body.1: По всем техническим вопросам обращайтесь на почту
   footer.body.2: Вам ответят в ближайшее время
   footer.email: t2avatar{'@'}affect.ru
+en:
+  title.1: what else
+  title.2: interesting?
+  body.1: You can download CGI-reel and post it to your Telegram-stories
+  cta.download: download
+  cta.download.prompt: Find the video in your smartphone browser downloads directory
+  footer.body.1: For all technical inquiries, please contact us via email
+  footer.body.2: You will be contacted shortly
+  footer.email: t2avatar{'@'}affect.ru
 </i18n>
