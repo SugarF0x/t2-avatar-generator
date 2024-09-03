@@ -171,15 +171,16 @@ const { t } = useI18n()
 }
 </style>
 
-<i18n>
-ru:
-  title.1: t2. ДРУГИЕ ПРАВИЛА.
-  title.2: НОВЫЙ УРОВЕНЬ.
-  body.1: "Сегодня важный день, и мы хотим разделить его с вами. Наш бренд изменился, теперь мы — t2. Предлагаем вам поддержать наше обновление: поставить стилизованную аватарку в ваших профилях Telegram на один день."
-  cta.ready: СОЗДАТЬ АВАТАРКУ
-en:
-  title.1: t2. DIFFERENT RULES.
-  title.2: NEW LEVEL.
-  body.1: "Today is an important day, and we want to share it with you. Our brand has changed; we are now t2. We invite you to support our update by setting a stylized profile picture in your Telegram profiles for one day."
-  cta.ready: CREATE AVATAR
+<i18n locale="ru">
+title.1: t2. ДРУГИЕ ПРАВИЛА.
+title.2: НОВЫЙ УРОВЕНЬ.
+body.1: "Сегодня важный день, и мы хотим разделить его с вами. Наш бренд изменился, теперь мы — t2. Предлагаем вам поддержать наше обновление: поставить стилизованную аватарку в ваших профилях Telegram на один день."
+cta.ready: СОЗДАТЬ АВАТАРКУ
+</i18n>
+
+<i18n locale="en">
+title.1: t2. DIFFERENT RULES.
+title.2: NEW LEVEL.
+body.1: "Today is an important day, and we want to share it with you. Our brand has changed; we are now t2. We invite you to support our update by setting a stylized profile picture in your Telegram profiles for one day."
+cta.ready: CREATE AVATAR
 </i18n>

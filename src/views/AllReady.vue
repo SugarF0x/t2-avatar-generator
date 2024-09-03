@@ -98,13 +98,14 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
 }
 </style>
 
-<i18n>
-ru:
-  title: ГОТОВО!
-  body.1: Ваше фото теперь на новом уровне. Сохраните его в фотоплёнку из загрузок браузера и поставьте на аватарку в своем Telegram
-  body.2: "Благодарим вас! А вот и те, кто уже поддержал ребрендинг t2:"
-en:
-  title: ALL DONE!
-  body.1: You photo is now on a new level. Move it to the Photos from your browser downloads and set it as your Telegram profile picture.
-  body.2: "Thank you! Here are the ones who have already supported t2 rebranding:"
+<i18n locale="ru">
+title: ГОТОВО!
+body.1: Ваше фото теперь на новом уровне. Сохраните его в фотоплёнку из загрузок браузера и поставьте на аватарку в своем Telegram
+body.2: "Благодарим вас! А вот и те, кто уже поддержал ребрендинг t2:"
+</i18n>
+
+<i18n locale="en">
+title: ALL DONE!
+body.1: You photo is now on a new level. Move it to the Photos from your browser downloads and set it as your Telegram profile picture.
+body.2: "Thank you! Here are the ones who have already supported t2 rebranding:"
 </i18n>

@@ -192,29 +192,30 @@ function handleDownload() {
 }
 </style>
 
-<i18n>
-ru:
-  title: воспользуйтесь конструктором
-  step.1.title: 'Шаг 1:'
-  step.1.description: выберите портретное фото из галереи
-  step.2.title: 'Шаг 2:'
-  step.2.description: выберите цвет фона, переключая кнопку
-  instructions.1: Вы можете менять расположение фото, увеличивать или уменьшать так,
-  instructions.2: как вам нравится
-  cta.photo: выбрать фото
-  cta.download: мне нравится, скачать!
-  cta.download.prompt: Ищите фото в загрузках своего браузера
-  prompt.telegram: "Кажется, вы открыли эту страницу через встроенный браузер Telegram. Чтобы воспользоваться конструктором, пожалуйста, откройте страницу в другом браузере: нажмите на кнопку меню в верхней части экрана"
-en:
-  title: use the editor
-  step.1.title: 'Step 1:'
-  step.1.description: select an image from your photo gallery
-  step.2.title: 'Step 2:'
-  step.2.description: select a color by toggling the switch
-  instructions.1: You can adjust the position and scale of the image
-  instructions.2: to your liking
-  cta.photo: select image
-  cta.download: I like it, download!
-  cta.download.prompt: Find the photo in your browser downloads directory
-  prompt.telegram: "It seems that you’ve opened this page through Telegram’s built-in browser. To use the editor, please open the page in another browser: tap the menu button at the top of the screen."
+<i18n locale="ru">
+title: воспользуйтесь конструктором
+step.1.title: 'Шаг 1:'
+step.1.description: выберите портретное фото из галереи
+step.2.title: 'Шаг 2:'
+step.2.description: выберите цвет фона, переключая кнопку
+instructions.1: Вы можете менять расположение фото, увеличивать или уменьшать так,
+instructions.2: как вам нравится
+cta.photo: выбрать фото
+cta.download: мне нравится, скачать!
+cta.download.prompt: Ищите фото в загрузках своего браузера
+prompt.telegram: "Кажется, вы открыли эту страницу через встроенный браузер Telegram. Чтобы воспользоваться конструктором, пожалуйста, откройте страницу в другом браузере: нажмите на кнопку меню в верхней части экрана"
+</i18n>
+
+<i18n locale="en">
+title: use the editor
+step.1.title: 'Step 1:'
+step.1.description: select an image from your photo gallery
+step.2.title: 'Step 2:'
+step.2.description: select a color by toggling the switch
+instructions.1: You can adjust the position and scale of the image
+instructions.2: to your liking
+cta.photo: select image
+cta.download: I like it, download!
+cta.download.prompt: Find the photo in your browser downloads directory
+prompt.telegram: "It seems that you’ve opened this page through Telegram’s built-in browser. To use the editor, please open the page in another browser: tap the menu button at the top of the screen."
 </i18n>
