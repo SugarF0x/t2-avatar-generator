@@ -74,13 +74,23 @@ onMounted(async () => {
     centeredScaling: true,
     rotateEnabled: false,
     flipEnabled: false,
-    enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
   })
   controlsLayer.add(controls)
   controllerExport = controls
 
+  let transformScale = 1
   controls.on('transform', () => {
     const controlPhoto = photoGroup.children[1]
+
+    const currentScaleX = controlPhoto.scaleX()
+    const currentScaleY = controlPhoto.scaleY()
+
+    const scales = [currentScaleX, currentScaleY]
+    if (scales.some(scale => scale > transformScale)) transformScale = Math.max(...scales)
+    else if (scales.some(scale => scale < transformScale)) transformScale = Math.min(...scales)
+
+    controlPhoto.scaleX(transformScale)
+    controlPhoto.scaleY(transformScale)
 
     mirrorGroup.scaleX(controlPhoto.scaleX())
     mirrorGroup.scaleY(controlPhoto.scaleY())
@@ -132,8 +142,8 @@ onMounted(async () => {
           const konvaImage = (
             new Konva.Image({
               image: image,
-              x: width * x - x,
-              y: height * y - y,
+              x: width * x - x * 4,
+              y: height * y - y * 4,
               offsetX: width / 2,
               offsetY: height / 2,
               scaleX: Math.pow(-1, x + 2),
