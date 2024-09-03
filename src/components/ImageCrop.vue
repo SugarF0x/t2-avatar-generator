@@ -78,7 +78,12 @@ onMounted(() => {
     nodes: [cropRect],
     rotateEnabled: false,
     flipEnabled: false,
-    keepRatio: false
+    keepRatio: false,
+    anchorDragBoundFunc(_, newPos) {
+      newPos.x = Math.max(0, Math.min(newPos.x, stage.width()))
+      newPos.y = Math.max(0, Math.min(newPos.y, stage.height()))
+      return newPos
+    }
   })
   controlsLayer.add(controls)
 
