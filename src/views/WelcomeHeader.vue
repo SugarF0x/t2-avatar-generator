@@ -32,6 +32,7 @@ const { t } = useI18n()
 </template>
 
 <style scoped lang="scss">
+@use "sass:math";
 @import '@/assets/styles/mixins';
 
 #header {
@@ -115,7 +116,7 @@ const { t } = useI18n()
 
   @include large {
     border-radius: 20px;
-    padding: 30px 80px 50px 24px;
+    padding: 30px 100px 50px 24px;
     gap: 30px;
   }
 
@@ -151,7 +152,16 @@ const { t } = useI18n()
     top: -20px;
     width: unset;
     height: calc(100% + 20px);
-    right: min(calc(-600px + max(0px, calc(80vw - 600px))), -200px);
+
+    $vw1: 650px;
+    $vw2: 1220px;
+    $ro1: -550px;
+    $ro2: 0px;
+
+    $m: math.div(($ro2 - $ro1), ($vw2 - $vw1));
+    $c: $ro1 - $m * $vw1;
+
+    right: calc(min(0px, max(-550px, calc($m * 100vw + $c))) - 200px);
   }
 }
 
