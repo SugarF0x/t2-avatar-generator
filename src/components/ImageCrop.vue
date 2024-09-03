@@ -77,6 +77,7 @@ onMounted(() => {
   const controls = new Konva.Transformer({
     nodes: [cropRect],
     rotateEnabled: false,
+    flipEnabled: false,
     keepRatio: false
   })
   controlsLayer.add(controls)
