@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import Video1 from "@/assets/videos/1.mp4"
+import Video1 from "@/assets/videos/t2-01.mp4"
+import Video2 from "@/assets/videos/t2-02.mp4"
+import Video3 from "@/assets/videos/t2-03.mp4"
+import Video4 from "@/assets/videos/t2-04.mov"
+import Metrics from "@/services/metrics.ts"
 import { useI18n } from "vue-i18n"
 import { ref } from "vue"
-import Metrics from "@/services/metrics.ts"
 
 const { t } = useI18n()
 
-const previews = [Video1,Video1,Video1,Video1]
+const previews = [Video1, Video2, Video3, Video4]
 
 const selectedIndex = ref<null | number>(null)
 let resetLastVideo: null | (() => void) = null
