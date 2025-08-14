@@ -1,15 +1,26 @@
 <script setup lang="ts">
-import Video1 from "@/assets/videos/t2-01.mp4"
-import Video2 from "@/assets/videos/t2-02.mp4"
-import Video3 from "@/assets/videos/t2-03.mp4"
-import Video4 from "@/assets/videos/t2-04.mov"
+import Doma from "@/assets/videos/doma.mp4"
+import Mf from "@/assets/videos/mf.mp4"
+import Msk from "@/assets/videos/msk.mp4"
+import Olv from "@/assets/videos/olv.mp4"
+import Svyaz from "@/assets/videos/svyaz.mp4"
+import Vertolet from "@/assets/videos/vertolet.mp4"
+import Water from "@/assets/videos/water.mp4"
 import Metrics from "@/services/metrics.ts"
 import { useI18n } from "vue-i18n"
 import { ref } from "vue"
 
 const { t } = useI18n()
 
-const previews = [Video1, Video2, Video3, Video4]
+const previews = [
+  Doma,
+  Mf,
+  Msk,
+  Olv,
+  Svyaz,
+  Vertolet,
+  Water,
+]
 
 const selectedIndex = ref<null | number>(null)
 let resetLastVideo: null | (() => void) = null
