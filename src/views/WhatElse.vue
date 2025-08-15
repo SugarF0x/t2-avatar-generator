@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Doma from "@/assets/videos/doma.mp4"
-import Mf from "@/assets/videos/mf.mp4"
-import Msk from "@/assets/videos/msk.mp4"
-import Olv from "@/assets/videos/olv.mp4"
+import Vid_3 from '@/assets/videos/Vid_3.mp4'
+import Vid_10 from '@/assets/videos/Vid_10.mp4'
+import Vid_12 from '@/assets/videos/Vid_12.mp4'
+import Vid_14 from '@/assets/videos/Vid_14.mp4'
 import Svyaz from "@/assets/videos/svyaz.mp4"
 import Vertolet from "@/assets/videos/vertolet.mp4"
 import Water from "@/assets/videos/water.mp4"
@@ -14,9 +15,10 @@ const { t } = useI18n()
 
 const previews = [
   Doma,
-  Mf,
-  Msk,
-  Olv,
+  Vid_3,
+  Vid_10,
+  Vid_12,
+  Vid_14,
   Svyaz,
   Vertolet,
   Water,
