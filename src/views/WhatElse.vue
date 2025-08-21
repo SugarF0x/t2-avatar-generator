@@ -182,17 +182,17 @@ function handleDownload() {
 </style>
 
 <i18n locale="ru">
-title.1: что еще
-title.2: интересного?
-body.1: Вы можете скачать CGI-ролик и опубликовать его в своих Telegram-сторис
+title.1: И ЭТО ЕЩЕ
+title.2: НЕ ВСЕ
+body.1: Продлим ощущение праздника? Вы можете скачать один из наших роликов и опубликовать его в своих Telegram-сторис
 cta.download: скачать
-cta.download.prompt: Ищите видео в загрузках своего смартфона
+cta.download.prompt: Ищите видео в загрузках своего браузера
 </i18n>
 
 <i18n locale="en">
-title.1: what else
-title.2: interesting?
-body.1: You can download CGI-reel and post it to your Telegram-stories
+title.1: AND THAT’S
+title.2: NOT ALL
+body.1: Shall we keep the party going?
 cta.download: download
-cta.download.prompt: Find the video in your smartphone browser downloads directory
+cta.download.prompt: Find your video in your browser’s downloads folder
 </i18n>
