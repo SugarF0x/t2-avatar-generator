@@ -16,9 +16,13 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
   <section id="all-ready">
     <div class="container">
       <div class="text">
-        <h2 class="title">{{ t('title') }}</h2>
+        <h2 class="title">
+          {{ t('title.1') }}
+          <b>{{ t('title.2') }}</b>
+        </h2>
         <p class="body">{{ t('body.1') }}</p>
         <p class="body">{{ t('body.2') }}</p>
+        <p class="body">{{ t('body.3') }}</p>
       </div>
       <div class="samples">
         <img v-for="sample in samples" :key="sample" :src="sample" alt="sample">
@@ -57,6 +61,10 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
   @include large {
     font-size: 50px;
   }
+
+  b {
+    color: initial;
+  }
 }
 
 .body {
@@ -67,7 +75,7 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
     font-size: 33px;
   }
 
-  & + & {
+  &:last-child {
     color: var(--t2-pink);
 
     @include large {
@@ -99,13 +107,17 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
 </style>
 
 <i18n locale="ru">
-title: ГОТОВО!
-body.1: Ваше фото теперь на новом уровне. Сохраните его в фотоплёнку из загрузок браузера и поставьте на аватарку в своем Telegram
-body.2: "Благодарим вас! А вот и те, кто уже поддержал ребрендинг t2:"
+title.1: ГОТОВО!
+title.2: ВЫ ПРЕКРАСНЫ!
+body.1: Осталось только поставить вашу новую аватарку в своем Telegram.
+body.2: Спасибо вам за этот чудесный год, все совместные достижения и эмоции. Мы не умеем предсказывать будущее, но уверены — дальше будет еще круче.
+body.3: "А вот и те, кто уже поддержал важное для нашего бренда событие:"
 </i18n>
 
 <i18n locale="en">
-title: ALL DONE!
-body.1: You photo is now on a new level. Move it to the Photos from your browser downloads and set it as your Telegram profile picture.
-body.2: "Thank you! Here are the ones who have already supported t2 rebranding:"
+title.1: ALL DONE!
+title.2: YOU ARE FABULOUS!
+body.1: Now all that’s left is to set your new avatar in Telegram.
+body.2: Thank you for this wonderful year, for every achievement and shared emotion. We can’t predict the future, but we’re sure — the best is yet to come
+body.3: "And here are the ones who’ve already supported this milestone for our brand:"
 </i18n>
