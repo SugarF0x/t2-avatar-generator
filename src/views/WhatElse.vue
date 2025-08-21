@@ -72,14 +72,6 @@ function handleDownload() {
         <button class="t2 dark" @click="handleDownload" :disabled="selectedIndex === null">{{ t('cta.download') }}</button>
         <small class="prompt">{{ t('cta.download.prompt') }}</small>
       </div>
-      <div class="footer">
-        <span>
-          {{ t('footer.body.1') }}:
-          <a :href="'mailto:' + t('footer.email')">{{ t('footer.email') }}</a>
-          <br>
-          {{ t('footer.body.2') }}
-        </span>
-      </div>
     </div>
   </section>
 </template>
@@ -187,16 +179,6 @@ function handleDownload() {
   margin-top: 10px;
   font-size: .5em;
 }
-
-.footer {
-  font-size: .4em;
-  text-align: center;
-  opacity: .5;
-
-  a {
-    color: var(--t2-cyan);
-  }
-}
 </style>
 
 <i18n locale="ru">
@@ -205,9 +187,6 @@ title.2: интересного?
 body.1: Вы можете скачать CGI-ролик и опубликовать его в своих Telegram-сторис
 cta.download: скачать
 cta.download.prompt: Ищите видео в загрузках своего смартфона
-footer.body.1: По всем техническим вопросам обращайтесь на почту
-footer.body.2: Вам ответят в ближайшее время
-footer.email: t2avatar{'@'}affect.ru
 </i18n>
 
 <i18n locale="en">
@@ -216,7 +195,4 @@ title.2: interesting?
 body.1: You can download CGI-reel and post it to your Telegram-stories
 cta.download: download
 cta.download.prompt: Find the video in your smartphone browser downloads directory
-footer.body.1: For all technical inquiries, please contact us via email
-footer.body.2: You will be contacted shortly
-footer.email: t2avatar{'@'}affect.ru
 </i18n>
