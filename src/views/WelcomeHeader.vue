@@ -183,14 +183,14 @@ const { t } = useI18n()
 
 <i18n locale="ru">
 title.1: t2. ДРУГИЕ ПРАВИЛА.
-title.2: Бренду Т2 год
-body.1: И каким этот год был насыщенным. Помните, как прошлой осенью мы отмечали ребрендинг и ставили стилизованные аватарки в Telegram? Хотим снова разделить с вами этот праздник, присоединяйтесь.
-cta.ready: Я С ВАМИ
+title.2: НОВЫЙ УРОВЕНЬ.
+body.1: "Сегодня важный день, и мы хотим разделить его с вами. Наш бренд изменился, теперь мы — t2. Предлагаем вам поддержать наше обновление: поставить стилизованную аватарку в ваших профилях Telegram на один день."
+cta.ready: СОЗДАТЬ АВАТАРКУ
 </i18n>
 
 <i18n locale="en">
 title.1: t2. DIFFERENT RULES.
-title.2: t2 turns one
-body.1: And what a full and exciting year it has been. Remember how last fall we celebrated our rebrand and set stylized avatars in Telegram? We want to share this celebration with you again — join us!
-cta.ready: I’M IN
+title.2: NEW LEVEL.
+body.1: "Today is an important day, and we want to share it with you. Our brand has changed; we are now t2. We invite you to support our update by setting a stylized profile picture in your Telegram profiles for one day."
+cta.ready: CREATE AVATAR
 </i18n>
