@@ -15,6 +15,8 @@ const { t } = useI18n()
       <div class="card">
         <div class="content">
           <h1>
+            {{ t('title.1') }}
+            <br>
             <span style="color: var(--t2-pink)">{{ t('title.2') }}</span>
           </h1>
           <p>{{ t('body.1') }}</p>
@@ -151,8 +153,8 @@ const { t } = useI18n()
     width: unset;
     height: calc(100% + 20px);
 
-    $vw1: 450px;
-    $vw2: 1020px;
+    $vw1: 650px;
+    $vw2: 1220px;
     $ro1: -550px;
     $ro2: 0px;
 
@@ -180,12 +182,14 @@ const { t } = useI18n()
 </style>
 
 <i18n locale="ru">
+title.1: t2. ДРУГИЕ ПРАВИЛА.
 title.2: Бренду Т2 год
 body.1: И каким этот год был насыщенным. Помните, как прошлой осенью мы отмечали ребрендинг и ставили стилизованные аватарки в Telegram? Хотим снова разделить с вами этот праздник, присоединяйтесь.
 cta.ready: Я С ВАМИ
 </i18n>
 
 <i18n locale="en">
+title.1: t2. DIFFERENT RULES.
 title.2: t2 turns one
 body.1: And what a full and exciting year it has been. Remember how last fall we celebrated our rebrand and set stylized avatars in Telegram? We want to share this celebration with you again — join us!
 cta.ready: I’M IN
