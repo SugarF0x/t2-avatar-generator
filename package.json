@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "deploy": "aws s3 --endpoint-url=https://storage.yandexcloud.net --profile yc-t2 sync ./dist s3://t2avatar.ru --delete --size-only",
+    "deploy": "yarn deploy:sync && yarn deploy:index",
+    "deploy:sync": "aws s3 --endpoint-url=https://storage.yandexcloud.net --profile yc-t2 sync ./dist s3://t2avatar.ru --delete --size-only",
+    "deploy:index": "aws s3 --endpoint-url=https://storage.yandexcloud.net --profile yc-t2 cp ./dist/index.html s3://t2avatar.ru",
     "bd": "yarn build && yarn deploy",
     "test:types": "vue-tsc --noEmit"
   },
