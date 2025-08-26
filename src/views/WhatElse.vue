@@ -114,6 +114,10 @@ function handleDownload() {
   }
 }
 
+p, small {
+  font-family: "T2 Rooftop Regular", "Roboto Light", sans-serif;
+}
+
 .img-wrapper {
   position: relative;
   overflow: hidden;

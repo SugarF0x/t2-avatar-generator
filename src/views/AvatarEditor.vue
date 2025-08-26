@@ -94,6 +94,10 @@ function handleDownload() {
   color: var(--t2-green);
 }
 
+small, td, p {
+  font-family: "T2 Rooftop Regular", "Roboto Light", sans-serif;
+}
+
 .container {
   overflow: hidden;
   font-size: 10px;

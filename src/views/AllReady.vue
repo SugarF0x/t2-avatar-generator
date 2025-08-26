@@ -70,6 +70,7 @@ const samples = [Sample1, Sample2, Sample3, Sample4, Sample5, Sample6]
 .body {
   font-size: 10px;
   text-align: center;
+  font-family: "T2 Rooftop Regular", "Roboto Light", sans-serif;
 
   @include large {
     font-size: 33px;
