@@ -147,8 +147,8 @@ small, td, p {
 }
 
 .title {
-  color: black;
-  background-color: var(--t2-green);
+  color: white;
+  background-color: var(--t2-pink);
   font-family: "T2 Halvar Breit", sans-serif;
   box-sizing: border-box;
   text-align: center;

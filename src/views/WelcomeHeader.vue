@@ -191,13 +191,13 @@ const { t } = useI18n()
 <i18n locale="ru">
 title.1: ХОТИМ РАЗДЕЛИТЬ
 title.2: С ВАМИ ВАЖНОЕ
-body.1: Бренду T2 исполнился год. Помните, как прошлой осенью мы отмечали ребрендинг и ставили стилизованные аватарки в Telegram? Приглашаем вас снова окунуться в праздничную атмосферу вместе с нами.
-cta.ready: Я С ВАМИ
+body.1: Бренду T2 исполнился год! Помните, как прошлой осенью мы отмечали ребрендинг и ставили стилизованные аватарки в Telegram? Приглашаем вас снова окунуться в праздничную атмосферу вместе с нами.
+cta.ready: Я С ВАМИ!
 </i18n>
 
 <i18n locale="en">
 title.1: WE WANT TO SHARE
 title.2: SOMETHING SPECIAL WITH YOU
-body.1: The T2 brand has turned one year old. Do you remember how last autumn we celebrated the rebranding and set stylized avatars in Telegram? We invite you once again to immerse yourself in the festive atmosphere with us.
-cta.ready: I'M IN
+body.1: The T2 brand has turned one year old! Do you remember how last autumn we celebrated the rebranding and set stylized avatars in Telegram? We invite you once again to immerse yourself in the festive atmosphere with us.
+cta.ready: I'M IN!
 </i18n>
