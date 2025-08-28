@@ -21,11 +21,11 @@ button.t2 {
   border-radius: 100px;
 
   font-size: 10px;
-  padding: 25px;
+  padding: 12px 24px;
 
   @include large {
     font-size: 25px;
-    padding: 59px 98.5px;
+    padding: 43px 98.5px;
   }
 
   &:disabled {

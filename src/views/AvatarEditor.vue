@@ -116,6 +116,10 @@ small, td, p {
       width: 100%;
       max-width: 130px;
 
+      @include small {
+        padding: 16px;
+      }
+
       @include large {
         max-width: 400px;
       }

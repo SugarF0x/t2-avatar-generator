@@ -136,8 +136,6 @@ const { t } = useI18n()
 
   button {
     margin-right: auto;
-    padding-top: 43px;
-    padding-bottom: 43px;
 
     margin-top: 10px;
 
